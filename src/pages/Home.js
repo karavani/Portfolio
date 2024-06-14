@@ -18,7 +18,7 @@ const Home = () => {
     <Layout>
       <MainContainer>
         <Content>
-          <CircularImage src="/profile.jpg" size="small" circular />
+          <CircularImage src="profile.jpg" size="small" circular />
           <TextContainer>
             <SpotlightText
               as={motion.div}
