@@ -18,7 +18,7 @@ const Home = () => {
     <Layout>
       <MainContainer>
         <Content>
-          <CircularImage src="https://github.com/karavani/Portfolio/blob/main/public/profile.jpg?raw=true/profile.jpg" size="small" circular />
+          <CircularImage src="https://github.com/karavani/Portfolio/blob/main/public/profile.png?raw=true/profile.png" size="small" circular />
           <TextContainer>
             <SpotlightText
               as={motion.div}
