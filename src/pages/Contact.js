@@ -85,7 +85,7 @@ const ContactLinks = styled.div`
 
   @media (max-width: 768px) {
     a {
-      font-size: 1rem;
+      font-size: 1.3rem;
     }
   }
 `;
