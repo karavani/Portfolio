@@ -19,17 +19,6 @@ const containerVariants = {
 const Projects = () => {
   const projects = [
     {
-<<<<<<< HEAD
-=======
-      title: "Surf Spots Israel",
-      description:
-        "Interactive map application showcasing Israel's surf spots with real-time reviews and spot information. Built with React.js and Redux.",
-      technologies: "React.js, Redux, Leaflet Maps, GitHub Pages",
-      liveLink: "https://karavani.github.io/surf-forecast/",
-      repoLink: "https://github.com/karavani/surf-forecast",
-    },
-    {
->>>>>>> 9a0fcf6 (updates)
       title: "Vacation App",
       description:
         "Developed with React.js, showcasing proficiency in Redux, web sockets, Node.js, CRUD, and more.",
