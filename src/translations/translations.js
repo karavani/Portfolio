@@ -109,6 +109,11 @@ export const translations = {
         title: "Sudoku Game",
         description: "Developed with JavaScript, HTML, and CSS.",
         technologies: "JavaScript, HTML, CSS"
+      },
+      scholarshipBot: {
+        title: "Scholarship Whatsapp Bot",
+        description: "Developed with node.js and twilio.",
+        technologies: "Whatsapp api, Node.js, Twilio"
       }
     },
     contact: {
@@ -292,6 +297,11 @@ export const translations = {
         title: "משחק סודוקו",
         description: "פותח עם JavaScript, HTML ו-CSS.",
         technologies: "JavaScript, HTML, CSS"
+      },
+      scholarshipBot: {
+        title: "בוט מלגות לווצאפ",
+        description: "פותח עם node.js and twilio.",
+        technologies: "Whatsapp api, Node.js, Twilio"
       }
     },
     contact: {

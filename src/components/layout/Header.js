@@ -56,6 +56,7 @@ const Header = () => {
               </MobileIcon>
             </LightningMenuItem>
           ))}
+          <span></span>
         </NavItems>
       </NavContent>
     </Nav>
@@ -104,7 +105,7 @@ const NavContent = styled.div`
 
 const NavItems = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: stretch;
   flex: 1;
   height: 100%;
@@ -206,7 +207,7 @@ const DropdownButton = styled.button`
   transition: all 0.3s ease;
   width: 32px;
   height: 32px;
-  justify-content: center;
+  justify-content: space-evenly;
 
   @media (max-width: 768px) {
     width: 36px;

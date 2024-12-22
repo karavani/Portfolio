@@ -73,7 +73,6 @@ const ContentWrapper = styled.div`
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
-    padding-top: 2rem;
   }
 `;
 

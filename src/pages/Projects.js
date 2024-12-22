@@ -25,7 +25,7 @@ const Projects = () => {
     },
     {
       ...t.supermarketApp,
-      image: "/supermarket.png",
+      image: "/supermarket.jpg",
       github: "https://github.com/noamkaravani/supermarket-app"
     },
     {
@@ -33,6 +33,11 @@ const Projects = () => {
       image: "/sudoku.png",
       github: "https://github.com/noamkaravani/sudokusite",
       live: "https://karavani.github.io/sudokusite/"
+    },
+    {
+      ...t.scholarshipBot,
+      image: "/scholarshipBot.jpg",
+      live: "https://wa.me/+972553055698"
     }
   ];
 
