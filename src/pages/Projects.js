@@ -1,81 +1,83 @@
 // src/pages/Projects.js
-import React from "react";
-import { Container, Header, Card } from "semantic-ui-react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import ProjectCard from "../components/ProjectCard";
-import { motion } from "framer-motion";
-import Layout from "../components/Layout";
-
-const containerVariants = {
-  hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-    },
-  },
-};
+import { motion } from 'framer-motion';
+import { LanguageContext } from '../components/language/LanguageContext';
+import { translations } from '../translations/translations';
+import ProjectCard from '../components/projects/ProjectCard';
 
 const Projects = () => {
+  const { language } = useContext(LanguageContext);
+  const t = translations[language]?.projects;
+  const isRTL = language === 'he';
+
   const projects = [
     {
-      title: "Vacation App",
-      description:
-        "Developed with React.js, showcasing proficiency in Redux, web sockets, Node.js, CRUD, and more.",
-      technologies: "React.js, Redux, Node.js",
-      liveLink: "",
-      repoLink: "https://github.com/karavani/vacation-app",
+      ...t.surfSpots,
+      image: "/surfspots.png",
+      github: "https://github.com/noamkaravani/surf-forecast",
+      live: "https://karavani.github.io/surf-forecast/"
     },
     {
-      title: "Supermarket App",
-      description:
-        "Developed with Angular, Node.js, Material UI, and Reactive forms.",
-      technologies: "Angular, Node.js, Material UI",
-      liveLink: "",
-      repoLink: "https://github.com/karavani/supermarket-online",
+      ...t.vacationApp,
+      image: "/vacation.png",
+      github: "https://github.com/noamkaravani/vacation-app"
     },
     {
-      title: "Sudoku Game",
-      description: "Developed with JavaScript, HTML, and CSS.",
-      technologies: "JavaScript, HTML, CSS",
-      liveLink: "https://karavani.github.io/sudokusite/",
-      repoLink: "",
+      ...t.supermarketApp,
+      image: "/supermarket.png",
+      github: "https://github.com/noamkaravani/supermarket-app"
     },
+    {
+      ...t.sudokuGame,
+      image: "/sudoku.png",
+      github: "https://github.com/noamkaravani/sudokusite",
+      live: "https://karavani.github.io/sudokusite/"
+    }
   ];
 
   return (
-    <Layout>
-      <MainContainer>
-        <Container>
-          <Header as="h1" textAlign="center">
-            Projects
-          </Header>
-          <Card.Group
-            as={motion.div}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {projects.map((project, index) => (
-              <ProjectCard key={index} {...project} />
-            ))}
-          </Card.Group>
-        </Container>
-      </MainContainer>
-    </Layout>
+    <ProjectsContainer dir={isRTL ? 'rtl' : 'ltr'}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Title>{t.title}</Title>
+        <ProjectsGrid>
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={index}
+              {...project}
+              isRTL={isRTL}
+            />
+          ))}
+        </ProjectsGrid>
+      </motion.div>
+    </ProjectsContainer>
   );
 };
 
-export default Projects;
-
-const MainContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 2rem;
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
+const ProjectsContainer = styled.div`
+  padding: 4rem 2rem;
+  background: #f8f9fa;
+  direction: ${props => props.dir};
 `;
+
+const Title = styled.h1`
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  color: #333;
+`;
+
+const ProjectsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+export default Projects;

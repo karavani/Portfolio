@@ -1,54 +1,77 @@
 // src/pages/About.js
-import React from 'react';
+import React, { useContext } from "react";
 import { Container, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
-import Layout from '../components/Layout';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import Layout from '../components/layout/Layout';
+import { LanguageContext } from '../context/LanguageContext';
+import { translations } from '../translations/translations';
+
+const ServiceIcon = styled.div`
+  font-size: 2rem;
+  margin-bottom: 1rem;
+`;
+
+const ServiceTitle = styled.h3`
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+`;
+
+const ServiceDescription = styled.p`
+  font-size: 1rem;
+  color: #666;
+`;
+
+const ExpertiseArea = styled.div`
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  
+  h3 {
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  p {
+    color: #666;
+  }
+`;
 
 const About = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
+  const { language } = useContext(LanguageContext);
+  const t = translations[language]?.about || translations['en'].about;
+  const isRTL = language === 'he';
+  
+  console.log('Current language:', language);
+  console.log('Translations available:', translations[language]?.about);
+  
   return (
     <Layout>
-      <ProgressBar style={{ scaleX }} />
-      <MainContainer>
+      <MainContainer language={language}>
         <Container text>
-          <Header as="h1" textAlign="center">About Me</Header>
+          <Header as="h1" textAlign="center">{t.title}</Header>
           <AboutText>
-            I am Noam Karavani, a passionate and skilled Full Stack Web Developer with almost 2.5 years of experience in the industry. My journey in web development has been marked by a commitment to delivering high-quality solutions and an eagerness to embrace new challenges and technologies.
-            <br /><br />
-            <strong>Professional Background:</strong>
-            <br />
-            Over the past few years, I have had the opportunity to work at Matrix Company, where I was involved in a variety of projects for government offices, banks, and other organizations. This experience has equipped me with a solid foundation in web development and honed my skills in creating robust and scalable solutions.
-            <br /><br />
-            <strong>Skills and Expertise:</strong>
-            <br />
-            My primary programming language is JavaScript, and I specialize in frontend development. I am proficient in working with frameworks and tools such as Lightning Web Components (LWC), React, and Visual Studio Code (VS Code). My expertise in these technologies allows me to build dynamic and responsive web applications that meet the highest standards.
-            <br /><br />
-            <strong>Personal Attributes:</strong>
-            <br />
-            What drives me in my work is the blend of creativity and problem-solving. I thrive on the challenges that web development presents, and I enjoy exploring new technologies and libraries to enhance my projects. My approach to problem-solving involves utilizing debugging tools, leveraging resources like Chat GPT and Google, and maintaining a flexible perspective. When faced with difficult problems, I often find that taking a break and returning with a fresh mindset leads to innovative solutions.
-            <br /><br />
-            <strong>Achievements and Milestones:</strong>
-            <br />
-            While I am always striving for recognition, my most significant achievements lie in the unique and out-of-the-box solutions I have provided to our clients. These solutions have helped solve complex problems and improve the efficiency of their operations. I hold a certification from John Bryce, which has been foundational in my development journey.
-            <br /><br />
-            <strong>Career Goals:</strong>
-            <br />
-            My aspirations are to continue developing cutting-edge web technologies, lead projects, and mentor junior developers. I am particularly interested in working on web projects that utilize the latest technologies and methodologies. My goal is to stay at the forefront of the industry and contribute to meaningful and impactful projects.
-            <br /><br />
-            <strong>Education and Training:</strong>
-            <br />
-            I am a certified Full Stack Web Developer, having completed my training at John Bryce. Beyond formal education, I am an avid learner, constantly expanding my knowledge through YouTube, Google, and Chat GPT. This continuous learning approach helps me stay updated with the latest trends and best practices in web development.
-            <br /><br />
-            <strong>Interests and Hobbies:</strong>
-            <br />
-            Outside of work, I enjoy exploring new projects and experimenting with different libraries for fun. Additionally, I like to play the guitar and surf. These activities provide a great balance to my professional life and keep me energized and inspired.
+            <section>
+              <h2>{t.summary.title}</h2>
+              <p style={{ whiteSpace: 'pre-wrap' }}>{t.summary.content}</p>
+            </section>
+
+            <section>
+              <h2>{t.expertise.title}</h2>
+              <ExpertiseGrid>
+                {t.expertise.areas.map((area, index) => (
+                  <ExpertiseArea key={index}>
+                    <h3>{area.title}</h3>
+                    <p>{area.description}</p>
+                  </ExpertiseArea>
+                ))}
+              </ExpertiseGrid>
+            </section>
+            
+            <CTASection>
+              <h2>{t.cta.title}</h2>
+              <p>{t.cta.description}</p>
+              <CTAButton href="/contact">{t.cta.buttonText}</CTAButton>
+            </CTASection>
           </AboutText>
         </Container>
       </MainContainer>
@@ -58,31 +81,70 @@ const About = () => {
 
 export default About;
 
-const ProgressBar = styled(motion.div)`
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: #0077ff;
-  transform-origin: 0%;
-  z-index: 10;
-`;
-
 const MainContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   padding: 2rem;
+  direction: ${props => props.language === 'he' ? 'rtl' : 'ltr'};
+  text-align: ${props => props.language === 'he' ? 'right' : 'left'};
 
   @media (max-width: 768px) {
     padding: 1rem;
   }
 `;
 
-const AboutText = styled.p`
+const AboutText = styled.div`
   font-size: 1.2rem;
   line-height: 1.6;
   margin-top: 2rem;
+`;
+
+const ServicesList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+`;
+
+const ServiceItem = styled.div`
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+`;
+
+const ExpertiseGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+`;
+
+const CTASection = styled.div`
+  text-align: center;
+  margin: 3rem 0;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+`;
+
+const CTAButton = styled.a`
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #0077ff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 1rem;
+  
+  &:hover {
+    background: #0066dd;
+    color: white;
+  }
 `;

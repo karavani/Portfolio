@@ -1,86 +1,99 @@
 // src/components/Header.js
-import React, { useState } from "react";
-import { Menu, Icon } from "semantic-ui-react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { FaBars } from "react-icons/fa";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { Link as ScrollLink } from 'react-scroll';
+import { LanguageToggle } from './LanguageToggle';
+import { LanguageContext } from '../context/LanguageContext';
+import { translations } from '../translations/translations';
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { language } = useContext(LanguageContext);
+  const t = translations[language].nav;
+  const isRTL = language === 'he';
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const menuItems = [
+    { to: "home", label: t.home },
+    { to: "about", label: t.about },
+    { to: "projects", label: t.projects },
+    { to: "contact", label: t.contact },
+  ];
 
   return (
-    <StyledMenu>
-      <Menu.Item as={Link} to="/" header>
-        Noam Karavani
-      </Menu.Item>
-      <MenuIcon onClick={toggleMenu}>
-        <FaBars size={24} />
-      </MenuIcon>
-      <NavMenu open={isOpen}>
-        <Menu.Item as={Link} to="/" onClick={() => setIsOpen(false)}>
-          Home
-        </Menu.Item>
-        <Menu.Item as={Link} to="/about" onClick={() => setIsOpen(false)}>
-          About
-        </Menu.Item>
-        <Menu.Item as={Link} to="/projects" onClick={() => setIsOpen(false)}>
-          Projects
-        </Menu.Item>
-        <Menu.Item as={Link} to="/contact" onClick={() => setIsOpen(false)}>
-          Contact
-        </Menu.Item>
-      </NavMenu>
-    </StyledMenu>
+    <Nav>
+      <NavContent dir={isRTL ? 'rtl' : 'ltr'}>
+        <NavItems dir={isRTL ? 'rtl' : 'ltr'}>
+          {menuItems.map((item) => (
+            <NavItem
+              key={item.to}
+              to={item.to}
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={-70}
+              activeClass="active"
+            >
+              {item.label}
+            </NavItem>
+          ))}
+        </NavItems>
+        <LanguageToggleWrapper dir={isRTL ? 'rtl' : 'ltr'}>
+          <LanguageToggle />
+        </LanguageToggleWrapper>
+      </NavContent>
+    </Nav>
   );
 };
 
+const Nav = styled.nav`
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+background: white;
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+z-index: 1000;
+`;
+
+const NavContent = styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 2rem;
+max-width: 1200px;
+margin: 0 auto;
+`;
+
+const NavItems = styled.div`
+display: flex;
+justify-content: space-around;
+align-items: center;
+width: 100%;
+direction: ${props => props.dir};
+`;
+
+const NavItem = styled(ScrollLink)`
+color: #333;
+text-decoration: none;
+padding: 0.5rem 1rem;
+cursor: pointer;
+transition: color 0.3s ease;
+font-size: 14px;
+
+&:hover {
+  color: #0077ff;
+}
+
+&.active {
+  color: #0077ff;
+}
+
+@media (max-width: 768px) {
+  padding: 0.25rem;
+}
+`;
+
+const LanguageToggleWrapper = styled.div`
+margin-${props => props.dir === 'rtl' ? 'right' : 'left'}: 1rem;
+`;
+
 export default Header;
-
-const StyledMenu = styled(Menu)`
-  padding: 0 1rem;
-  position: relative;
-
-  @media (max-width: 768px) {
-    padding: 0;
-  }
-`;
-
-const MenuIcon = styled.div`
-  display: none;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    display: block;
-    position: absolute;
-    top: 0.6rem;
-    right: 1rem;
-  }
-`;
-
-const NavMenu = styled.div`
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    position: absolute;
-    top: 3rem;
-    right: 0;
-    width: 100%;
-    z-index: 1;
-    background: white;
-    border-bottom: 1px solid rgba(34, 36, 38, 0.15);
-    padding: 0.5rem 0 1rem 0;
-    display: ${(props) => (props.open ? "block" : "none")};
-
-    .item {
-      width: 100%;
-      text-align: center;
-      padding: 1rem 0;
-      color: #fff;
-    }
-  }
-`;
