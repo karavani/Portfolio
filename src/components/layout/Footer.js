@@ -1,8 +1,7 @@
-// src/components/Footer.js
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import { LanguageContext } from '../language/LanguageContext';
+import { LanguageContext } from '../../context/LanguageContext';
 import { translations } from '../../translations/translations';
 
 const Footer = () => {

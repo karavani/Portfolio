@@ -23,6 +23,7 @@ const App = () => {
   return (
     <LanguageProvider>
       <ThemeProvider theme={theme}>
+        <Header />
         <Layout>
           <section id="home">
             <Home />
@@ -38,7 +39,6 @@ const App = () => {
             <Contact />
           </section>
         </Layout>
-        <Header />
         <Footer />
       </ThemeProvider>
     </LanguageProvider>

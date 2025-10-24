@@ -1,92 +1,101 @@
-// src/pages/Contact.js
 import React, { useContext } from "react";
-import { Container, Header } from 'semantic-ui-react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import Layout from '../components/layout/Layout';
-import { LanguageContext } from '../context/LanguageContext';
-import { translations } from '../translations/translations';
+import { Container, Header } from "semantic-ui-react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGithub,
+  faLinkedin,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { LanguageContext } from "../context/LanguageContext";
+import { translations } from "../translations/translations";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6 }
-  }
+    transition: { duration: 0.6 },
+  },
 };
-
 const Contact = () => {
   const { language } = useContext(LanguageContext);
-  const t = translations[language]?.contact || translations['en'].contact;
-  const isRTL = language === 'he';
+  const t = translations[language]?.contact || translations["en"].contact;
+  const isRTL = language === "he";
   const phoneNumber = "+972505972505";
+
+  useScrollReveal([
+    { selector: '.header-section' },
+    { selector: '.contact-card' },
+  ]);
 
   const contactLinks = [
     {
       icon: faEnvelope,
-      href: 'mailto:Noam12882@gmail.com',
+      href: "mailto:Noam12882@gmail.com",
       label: t.email,
-      text: 'Noam12882@gmail.com'
+      text: "Noam12882@gmail.com",
     },
     {
       icon: faLinkedin,
-      href: 'https://www.linkedin.com/in/noam-karavani',
+      href: "https://www.linkedin.com/in/noam-karavani",
       label: t.linkedin,
-      text: 'Noam Karavani'
+      text: "Noam Karavani",
     },
     {
       icon: faWhatsapp,
       href: `https://wa.me/${phoneNumber}`,
       label: t.whatsapp,
-      text: t.whatsappText
+      text: t.whatsappText,
     },
     {
       icon: faGithub,
-      href: 'https://github.com/noamkaravani',
-      label: 'GitHub',
-      text: 'noamkaravani'
-    }
+      href: "https://github.com/noamkaravani",
+      label: "GitHub",
+      text: "noamkaravani",
+    },
   ];
 
   return (
-    <Layout>
-      <MainContainer dir={isRTL ? 'rtl' : 'ltr'}>
-        <Container text>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <Header as="h1" textAlign="center">{t.title}</Header>
-            <SubHeader>{t.subtitle}</SubHeader>
-            
-            <ContactGrid dir={isRTL ? 'rtl' : 'ltr'}>
-              {contactLinks.map((link, index) => (
-                <ContactCard 
-                  key={index}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  dir={isRTL ? 'rtl' : 'ltr'}
-                >
-                  <IconWrapper>
-                    <FontAwesomeIcon icon={link.icon} />
-                  </IconWrapper>
-                  <ContactInfo dir={isRTL ? 'rtl' : 'ltr'}>
-                    <h3>{link.label}</h3>
-                    <p>{link.text}</p>
-                  </ContactInfo>
-                </ContactCard>
-              ))}
-            </ContactGrid>
-          </motion.div>
-        </Container>
-      </MainContainer>
-    </Layout>
+    <MainContainer dir={isRTL ? "rtl" : "ltr"}>
+      <Container text>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <section className="header-section">
+          <Header as="h1" textAlign="center">
+            {t.title}
+          </Header>
+          <SubHeader>{t.subtitle}</SubHeader>
+          </section>
+          <ContactGrid dir={isRTL ? "rtl" : "ltr"}>
+            {contactLinks.map((link, index) => (
+              <ContactCard
+                className="contact-card"
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                dir={isRTL ? "rtl" : "ltr"}
+              >
+                <IconWrapper>
+                  <FontAwesomeIcon icon={link.icon} />
+                </IconWrapper>
+                <ContactInfo dir={isRTL ? "rtl" : "ltr"}>
+                  <h3>{link.label}</h3>
+                  <p>{link.text}</p>
+                </ContactInfo>
+              </ContactCard>
+            ))}
+          </ContactGrid>
+        </motion.div>
+      </Container>
+    </MainContainer>
   );
 };
 
@@ -97,8 +106,8 @@ const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: #f8f9fa;
-  direction: ${props => props.dir};
-  text-align: ${props => props.dir === 'rtl' ? 'right' : 'left'};
+  direction: ${(props) => props.dir};
+  text-align: ${(props) => (props.dir === "rtl" ? "right" : "left")};
 `;
 
 const SubHeader = styled.p`
@@ -113,7 +122,7 @@ const ContactGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
-  direction: ${props => props.dir};
+  direction: ${(props) => props.dir};
 `;
 
 const ContactCard = styled.a`
@@ -127,7 +136,6 @@ const ContactCard = styled.a`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 
-
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -136,8 +144,8 @@ const ContactCard = styled.a`
 `;
 
 const ContactInfo = styled.div`
-  text-align: ${props => props.dir === 'rtl' ? 'right' : 'left'};
-  margin: ${props => props.dir === 'rtl' ? '0 1rem 0 0' : '0 0 0 1rem'};
+  text-align: ${(props) => (props.dir === "rtl" ? "right" : "left")};
+  margin: ${(props) => (props.dir === "rtl" ? "0 1rem 0 0" : "0 0 0 1rem")};
 
   h3 {
     margin: 0 0 0.5rem 0;

@@ -1,4 +1,3 @@
-// src/components/ProjectCard.js
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -7,7 +6,8 @@ const ProjectCard = ({ title, description, technologies, image, github, live, is
   const techArray = technologies.split(', ');
   
   return (
-    <Card
+    <Card 
+    className="project-card"
       as={motion.div}
       whileHover={{ y: -5 }}
       dir={isRTL ? 'rtl' : 'ltr'}

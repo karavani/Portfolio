@@ -1,61 +1,67 @@
-// src/pages/Projects.js
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { motion } from 'framer-motion';
-import { LanguageContext } from '../components/language/LanguageContext';
-import { translations } from '../translations/translations';
-import ProjectCard from '../components/projects/ProjectCard';
+import { motion } from "framer-motion";
+import { LanguageContext } from "../context/LanguageContext";
+import { translations } from "../translations/translations";
+import ProjectCard from "../components/projects/ProjectCard";
+import useScrollReveal from "../hooks/useScrollReveal";
 
 const Projects = () => {
   const { language } = useContext(LanguageContext);
-  const t = translations[language]?.projects;
-  const isRTL = language === 'he';
 
+  const t = translations[language]?.projects || translations["en"].projects;
+  const isRTL = language === "he";
+
+  useScrollReveal([
+    { selector: '.project-title' },
+    { selector: '.project-card' },
+  ]);
   const projects = [
+    {
+      ...t.scholarshipBot,
+      image: "/scholarshipBot.jpg",
+      live: "https://wa.me/+972553055698",
+    },
+    {
+      ...t.digilog,
+      image: "/digilog.png",
+      live: "https://www.digilog.shop/",
+    },
     {
       ...t.surfSpots,
       image: "/surfspots.png",
       github: "https://github.com/noamkaravani/surf-forecast",
-      live: "https://karavani.github.io/surf-forecast/"
+      live: "https://karavani.github.io/surf-forecast/",
     },
     {
       ...t.vacationApp,
       image: "/vacation.png",
-      github: "https://github.com/noamkaravani/vacation-app"
+      github: "https://github.com/noamkaravani/vacation-app",
     },
     {
       ...t.supermarketApp,
       image: "/supermarket.jpg",
-      github: "https://github.com/noamkaravani/supermarket-app"
+      github: "https://github.com/noamkaravani/supermarket-app",
     },
     {
       ...t.sudokuGame,
       image: "/sudoku.png",
       github: "https://github.com/noamkaravani/sudokusite",
-      live: "https://karavani.github.io/sudokusite/"
+      live: "https://karavani.github.io/sudokusite/",
     },
-    {
-      ...t.scholarshipBot,
-      image: "/scholarshipBot.jpg",
-      live: "https://wa.me/+972553055698"
-    }
   ];
 
   return (
-    <ProjectsContainer dir={isRTL ? 'rtl' : 'ltr'}>
+    <ProjectsContainer dir={isRTL ? "rtl" : "ltr"}>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        <Title>{t.title}</Title>
+        <Title className="project-title">{t.title}</Title>
         <ProjectsGrid>
           {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              {...project}
-              isRTL={isRTL}
-            />
+            <ProjectCard  key={index} {...project} isRTL={isRTL} />
           ))}
         </ProjectsGrid>
       </motion.div>
@@ -66,7 +72,7 @@ const Projects = () => {
 const ProjectsContainer = styled.div`
   padding: 4rem 2rem;
   background: #f8f9fa;
-  direction: ${props => props.dir};
+  direction: ${(props) => props.dir};
 `;
 
 const Title = styled.h1`
@@ -83,6 +89,7 @@ const ProjectsGrid = styled.div`
   padding: 2rem 0;
   max-width: 1200px;
   margin: 0 auto;
+  justify-items: center;
 `;
 
 export default Projects;

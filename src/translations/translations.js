@@ -114,6 +114,11 @@ export const translations = {
         title: "Scholarship Whatsapp Bot",
         description: "Developed with node.js and twilio.",
         technologies: "Whatsapp api, Node.js, Twilio"
+      },
+      digilog: {
+        title: "Digilog - מומחי לד",
+        description: "אתר לעסק בתחום פתרונות הלד",
+        technologies: "React.js, HTML, CSS, JavaScript"
       }
     },
     contact: {
@@ -302,6 +307,11 @@ export const translations = {
         title: "בוט מלגות לווצאפ",
         description: "פותח עם node.js and twilio.",
         technologies: "Whatsapp api, Node.js, Twilio"
+      },
+      digilog: {
+        title: "Digilog - מומחי לד",
+        description: "אתר לעסק בתחום פתרונות הלד",
+        technologies: "React.js, HTML, CSS, JavaScript"
       }
     },
     contact: {

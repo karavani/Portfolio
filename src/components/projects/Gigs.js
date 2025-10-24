@@ -1,57 +1,61 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import { LanguageContext } from '../../context/LanguageContext';
-import { translations } from '../../translations/translations';
+import React, { useContext } from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { LanguageContext } from "../../context/LanguageContext";
+import { translations } from "../../translations/translations";
+import useScrollReveal from "../../hooks/useScrollReveal";
 
 const Gigs = () => {
   const { language } = useContext(LanguageContext);
-  const t = translations[language]?.gigs || translations['en'].gigs;
-  const isRTL = language === 'he';
-
+  const t = translations[language]?.gigs || translations["en"].gigs;
+  const isRTL = language === "he";
+  
+  useScrollReveal([
+    { selector: '.gig-card' },
+  ]);
   const services = [
     {
-      id: 'fullstack',
-      icon: '💻',
+      id: "fullstack",
+      icon: "💻",
       title: t.fullstack.title,
       description: t.fullstack.description,
-      features: t.fullstack.features
+      features: t.fullstack.features,
     },
     {
-      id: 'frontend',
-      icon: '🎨',
+      id: "frontend",
+      icon: "🎨",
       title: t.frontend.title,
       description: t.frontend.description,
-      features: t.frontend.features
+      features: t.frontend.features,
     },
     {
-      id: 'backend',
-      icon: '⚙️',
+      id: "backend",
+      icon: "⚙️",
       title: t.backend.title,
       description: t.backend.description,
-      features: t.backend.features
+      features: t.backend.features,
     },
     {
-      id: 'crm',
-      icon: '🔄',
+      id: "crm",
+      icon: "🔄",
       title: t.crm.title,
       description: t.crm.description,
-      features: t.crm.features
+      features: t.crm.features,
     },
     {
-      id: 'whatsapp',
-      icon: '💬',
+      id: "whatsapp",
+      icon: "💬",
       title: t.whatsapp.title,
       description: t.whatsapp.description,
-      features: t.whatsapp.features
-    }
+      features: t.whatsapp.features,
+    },
   ];
 
   return (
     <GigsSection>
-      <Container dir={isRTL ? 'rtl' : 'ltr'}>
+      <Container dir={isRTL ? "rtl" : "ltr"}>
         <Title>{t.title}</Title>
-        <ServicesGrid>
+        <ServicesGrid className="gig-card">
           {services.map((service, index) => (
             <ServiceCard
               key={service.id}
@@ -59,7 +63,7 @@ const Gigs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2 }}
-              dir={isRTL ? 'rtl' : 'ltr'}
+              dir={isRTL ? "rtl" : "ltr"}
             >
               <ServiceIcon>{service.icon}</ServiceIcon>
               <ServiceTitle>{service.title}</ServiceTitle>
@@ -89,8 +93,8 @@ const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-  direction: ${props => props.dir};
-  text-align: ${props => props.dir === 'rtl' ? 'right' : 'left'};
+  direction: ${(props) => props.dir};
+  text-align: ${(props) => (props.dir === "rtl" ? "right" : "left")};
 `;
 
 const Title = styled.h2`
@@ -117,8 +121,8 @@ const ServiceCard = styled.div`
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  direction: ${props => props.dir};
-  text-align: ${props => props.dir === 'rtl' ? 'right' : 'left'};
+  direction: ${(props) => props.dir};
+  text-align: ${(props) => (props.dir === "rtl" ? "right" : "left")};
 
   &:hover {
     transform: translateY(-5px);
@@ -159,8 +163,8 @@ const FeatureItem = styled.li`
 
 const FeatureIcon = styled.span`
   color: #0077ff;
-  margin-${props => props.isRTL ? 'left' : 'right'}: 0.5rem;
+  margin-${(props) => (props.isRTL ? "left" : "right")}: 0.5rem;
   font-weight: bold;
 `;
 
-export default Gigs; 
+export default Gigs;
