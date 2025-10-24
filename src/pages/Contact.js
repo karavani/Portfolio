@@ -11,26 +11,34 @@ import {
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { LanguageContext } from "../context/LanguageContext";
 import { translations } from "../translations/translations";
-import useScrollReveal from "../hooks/useScrollReveal";
 
-const containerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6 },
-  },
-};
 const Contact = () => {
   const { language } = useContext(LanguageContext);
   const t = translations[language]?.contact || translations["en"].contact;
   const isRTL = language === "he";
   const phoneNumber = "+972505972505";
 
-  useScrollReveal([
-    { selector: '.header-section' },
-    { selector: '.contact-card' },
-  ]);
+  // useEffect(() => {
+  //   // נקה את כל ה-ScrollReveal הקיים
+  //   ScrollReveal().clean('.header-section');
+  //   ScrollReveal().clean('.contact-card');
+
+  //   const cleanupTimeout = setTimeout(() => {
+  //     const sr = ScrollReveal({
+  //       origin: 'top',
+  //       distance: '80px',
+  //       duration: 2000,
+  //       reset: true,
+  //     });
+
+  //     sr.reveal('.header-section', {});
+  //     sr.reveal('.contact-card', {});
+  //   }, 150);
+
+  //   return () => {
+  //     clearTimeout(cleanupTimeout);
+  //   };
+  // }, [language]);
 
   const contactLinks = [
     {
@@ -63,34 +71,48 @@ const Contact = () => {
     <MainContainer dir={isRTL ? "rtl" : "ltr"}>
       <Container text>
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          key={`contact-${language}`}
         >
-          <section className="header-section">
-          <Header as="h1" textAlign="center">
-            {t.title}
-          </Header>
-          <SubHeader>{t.subtitle}</SubHeader>
-          </section>
+          <motion.section
+            className="header-section"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <Header as="h1" textAlign="center">
+              {t.title}
+            </Header>
+            <SubHeader>{t.subtitle}</SubHeader>
+          </motion.section>
           <ContactGrid dir={isRTL ? "rtl" : "ltr"}>
             {contactLinks.map((link, index) => (
-              <ContactCard
-                className="contact-card"
+              <motion.div
                 key={index}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                dir={isRTL ? "rtl" : "ltr"}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.2 + index * 0.1 }}
               >
-                <IconWrapper>
-                  <FontAwesomeIcon icon={link.icon} />
-                </IconWrapper>
-                <ContactInfo dir={isRTL ? "rtl" : "ltr"}>
-                  <h3>{link.label}</h3>
-                  <p>{link.text}</p>
-                </ContactInfo>
-              </ContactCard>
+                <ContactCard
+                  className="contact-card"
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  dir={isRTL ? "rtl" : "ltr"}
+                  whileHover={{ scale: 1.05 }}
+                  as={motion.a}
+                >
+                  <IconWrapper>
+                    <FontAwesomeIcon icon={link.icon} />
+                  </IconWrapper>
+                  <ContactInfo dir={isRTL ? "rtl" : "ltr"}>
+                    <h3>{link.label}</h3>
+                    <p>{link.text}</p>
+                  </ContactInfo>
+                </ContactCard>
+              </motion.div>
             ))}
           </ContactGrid>
         </motion.div>

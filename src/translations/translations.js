@@ -7,7 +7,8 @@ export const translations = {
       contact: "Contact"
     },
     home: {
-      greeting: "Hi, I'm Noam Karavani",
+      greeting: "Hi, I'm",
+      name: "Noam Karavani",
       role: "Full Stack Developer",
       description: "Passionate about creating web applications with modern technologies"
     },
@@ -116,8 +117,8 @@ export const translations = {
         technologies: "Whatsapp api, Node.js, Twilio"
       },
       digilog: {
-        title: "Digilog - מומחי לד",
-        description: "אתר לעסק בתחום פתרונות הלד",
+        title: "Digilog - LED Experts",
+        description: "Website for a business in the field of LED solutions",
         technologies: "React.js, HTML, CSS, JavaScript"
       }
     },
@@ -200,7 +201,8 @@ export const translations = {
       contact: "צור קשר"
     },
     home: {
-      greeting: "היי, אני נועם קרואני",
+      greeting: "היי, אני",
+      name: "נועם קרואני",
       role: "מפתח פול סטאק",
       description: "בעל תשוקה ליצירת אפליקציות ווב עם טכנולוגיות מודרניות"
     },

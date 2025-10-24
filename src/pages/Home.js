@@ -1,47 +1,78 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Image } from "semantic-ui-react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { LanguageContext } from "../context/LanguageContext";
-import { translations } from "../translations";
-import useScrollReveal from '../hooks/useScrollReveal';
+import { translations } from "../translations/translations";
 
 const Home = () => {
   const { language } = useContext(LanguageContext);
-  const t = translations[language];
+  const t = translations[language]?.home || translations["en"].home;
   const isRTL = language === "he";
 
-  useScrollReveal([
-    { selector: '.home-title' },
-    { selector: '.home-img', options: { origin: 'right', delay: 400 } },
-  ]);
+  // useEffect(() => {
+  //   // נקה את כל ה-ScrollReveal הקיים
+  //   ScrollReveal().clean('.home-title');
+  //   ScrollReveal().clean('.home-img');
+
+  //   const cleanupTimeout = setTimeout(() => {
+  //     const sr = ScrollReveal({
+  //       origin: 'top',
+  //       distance: '80px',
+  //       duration: 2000,
+  //       reset: true,
+  //     });
+
+  //     sr.reveal('.home-title', {});
+  //     sr.reveal('.home-img', { origin: 'right', delay: 400 });
+  //   }, 150);
+
+  //   return () => {
+  //     clearTimeout(cleanupTimeout);
+  //   };
+  // }, [language]);
 
   return (
     <MainContainer dir={isRTL ? "rtl" : "ltr"}>
       <ContentWrapper>
-        <TextSection className="home-title">
-          <SpotlightText
-            as={motion.div}
-            animate={{
-              backgroundPosition: ["0% 75%", "100% 50%", "0% 50%"],
-            }}
-            transition={{ duration: 3.5, ease: "easeIn" }}
-            style={{
-              background:
-                "linear-gradient(120deg, blue, blue,rgb(200, 200, 255), blue, blue)",
-              backgroundSize: "300%",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            <Greeting>{t.greeting}</Greeting>
-            <Name>{t.name}</Name>
-            <Role>{t.role}</Role>
-          </SpotlightText>
-        </TextSection>
-        <ImageSection className="home-img">
-          <CircularImage src={`${process.env.PUBLIC_URL}/profile3.png`} size="medium" circular />
-        </ImageSection>
+        <motion.div
+          initial={{ opacity: 0, x: isRTL ? 50 : -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          key={`home-text-${language}`}
+          style={{ flex: 1 }}
+        >
+          <TextSection className="home-title">
+            <SpotlightText
+              as={motion.div}
+              animate={{
+                backgroundPosition: ["0% 75%", "100% 50%", "0% 50%"],
+              }}
+              transition={{ duration: 3.5, ease: "easeIn" }}
+              style={{
+                background:
+                  "linear-gradient(120deg, blue, blue,rgb(200, 200, 255), blue, blue)",
+                backgroundSize: "300%",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              <Greeting>{t.greeting}</Greeting>
+              <Name>{t.name}</Name>
+              <Role>{t.role}</Role>
+            </SpotlightText>
+          </TextSection>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: isRTL ? -50 : 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          style={{ flex: 1 }}
+        >
+          <ImageSection className="home-img">
+            <CircularImage src={`${process.env.PUBLIC_URL}/profile3.png`} size="medium" circular />
+          </ImageSection>
+        </motion.div>
       </ContentWrapper>
     </MainContainer>
   );

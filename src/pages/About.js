@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { Container, Header } from "semantic-ui-react";
 import { Link as ScrollLink } from "react-scroll";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { LanguageContext } from "../context/LanguageContext";
 import { translations } from "../translations/translations";
-import useScrollReveal from "../hooks/useScrollReveal";
 
 const ExpertiseArea = styled.div`
   padding: 1.5rem;
@@ -25,44 +25,93 @@ const About = () => {
   const { language } = useContext(LanguageContext);
   const t = translations[language]?.about || translations["en"].about;
 
-  useScrollReveal([
-    { selector: '.h1-header' },
-    { selector: '.summery' },
-    { selector: '.expertises' },
-    { selector: '.cta-section' },
-  ]);
+  // useEffect(() => {
+  //   // נקה את כל ה-ScrollReveal הקיים
+  //   ScrollReveal().clean('.h1-header');
+  //   ScrollReveal().clean('.summery');
+  //   ScrollReveal().clean('.expertises');
+  //   ScrollReveal().clean('.cta-section');
+
+  //   // המתן שהניקוי יסתיים
+  //   const cleanupTimeout = setTimeout(() => {
+  //     const sr = ScrollReveal({
+  //       origin: 'top',
+  //       distance: '80px',
+  //       duration: 2000,
+  //       reset: true,
+  //     });
+
+  //     sr.reveal('.h1-header', {});
+  //     sr.reveal('.summery', {});
+  //     sr.reveal('.expertises', {});
+  //     sr.reveal('.cta-section', {});
+  //   }, 150);
+
+  //   return () => {
+  //     clearTimeout(cleanupTimeout);
+  //   };
+  // }, [language]);
 
   return (
     <MainContainer language={language}>
       <Container text>
-        <Header className="h1-header" as="h1" textAlign="center">
-          {t.title}
-        </Header>
-        <AboutText className="summery">
-          <section>
-            <h2>{t.summary.title}</h2>
-            <p style={{ whiteSpace: "pre-wrap" }}>{t.summary.content}</p>
-          </section>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          key={`about-${language}`}
+        >
+          <Header className="h1-header" as="h1" textAlign="center">
+            {t.title}
+          </Header>
+          <AboutText className="summery">
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h2>{t.summary.title}</h2>
+              <p style={{ whiteSpace: "pre-wrap" }}>{t.summary.content}</p>
+            </motion.section>
 
-          <section className="expertises">
-            <h2>{t.expertise.title}</h2>
-            <ExpertiseGrid>
-              {t.expertise.areas.map((area, index) => (
-                <ExpertiseArea key={index}>
-                  <h3>{area.title}</h3>
-                  <p>{area.description}</p>
-                </ExpertiseArea>
-              ))}
-            </ExpertiseGrid>
-          </section>
+            <motion.section
+              className="expertises"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <h2>{t.expertise.title}</h2>
+              <ExpertiseGrid>
+                {t.expertise.areas.map((area, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                  >
+                    <ExpertiseArea>
+                      <h3>{area.title}</h3>
+                      <p>{area.description}</p>
+                    </ExpertiseArea>
+                  </motion.div>
+                ))}
+              </ExpertiseGrid>
+            </motion.section>
 
-          <CTASection className="cta-section">
-            <h2>{t.cta.title}</h2>
-            <CTAButton to="contact" smooth={true} duration={500}>
-              {t.cta.buttonText}
-            </CTAButton>
-          </CTASection>
-        </AboutText>
+            <CTASection
+              as={motion.div}
+              className="cta-section"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <h2>{t.cta.title}</h2>
+              <CTAButton to="contact" smooth={true} duration={500}>
+                {t.cta.buttonText}
+              </CTAButton>
+            </CTASection>
+          </AboutText>
+        </motion.div>
       </Container>
     </MainContainer>
   );

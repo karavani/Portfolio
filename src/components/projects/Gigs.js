@@ -3,16 +3,31 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { LanguageContext } from "../../context/LanguageContext";
 import { translations } from "../../translations/translations";
-import useScrollReveal from "../../hooks/useScrollReveal";
 
 const Gigs = () => {
   const { language } = useContext(LanguageContext);
   const t = translations[language]?.gigs || translations["en"].gigs;
   const isRTL = language === "he";
   
-  useScrollReveal([
-    { selector: '.gig-card' },
-  ]);
+  // useEffect(() => {
+  //   // נקה את כל ה-ScrollReveal הקיים
+  //   ScrollReveal().clean('.gig-card');
+
+  //   const cleanupTimeout = setTimeout(() => {
+  //     const sr = ScrollReveal({
+  //       origin: 'top',
+  //       distance: '80px',
+  //       duration: 2000,
+  //       reset: true,
+  //     });
+
+  //     sr.reveal('.gig-card', {});
+  //   }, 150);
+
+  //   return () => {
+  //     clearTimeout(cleanupTimeout);
+  //   };
+  // }, [language]);
   const services = [
     {
       id: "fullstack",
@@ -54,15 +69,22 @@ const Gigs = () => {
   return (
     <GigsSection>
       <Container dir={isRTL ? "rtl" : "ltr"}>
-        <Title>{t.title}</Title>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          key={`gigs-${language}`}
+        >
+          <Title>{t.title}</Title>
+        </motion.div>
         <ServicesGrid className="gig-card">
           {services.map((service, index) => (
             <ServiceCard
               key={service.id}
               as={motion.div}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
               dir={isRTL ? "rtl" : "ltr"}
             >
               <ServiceIcon>{service.icon}</ServiceIcon>

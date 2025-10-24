@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { LanguageContext } from "../context/LanguageContext";
 import { translations } from "../translations/translations";
 import ProjectCard from "../components/projects/ProjectCard";
-import useScrollReveal from "../hooks/useScrollReveal";
 
 const Projects = () => {
   const { language } = useContext(LanguageContext);
@@ -12,10 +11,27 @@ const Projects = () => {
   const t = translations[language]?.projects || translations["en"].projects;
   const isRTL = language === "he";
 
-  useScrollReveal([
-    { selector: '.project-title' },
-    { selector: '.project-card' },
-  ]);
+  // useEffect(() => {
+  //   // נקה את כל ה-ScrollReveal הקיים
+  //   ScrollReveal().clean('.project-title');
+  //   ScrollReveal().clean('.project-card');
+
+  //   const cleanupTimeout = setTimeout(() => {
+  //     const sr = ScrollReveal({
+  //       origin: 'top',
+  //       distance: '80px',
+  //       duration: 2000,
+  //       reset: true,
+  //     });
+
+  //     sr.reveal('.project-title', {});
+  //     sr.reveal('.project-card', {});
+  //   }, 150);
+
+  //   return () => {
+  //     clearTimeout(cleanupTimeout);
+  //   };
+  // }, [language]);
   const projects = [
     {
       ...t.scholarshipBot,
@@ -57,11 +73,25 @@ const Projects = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
+        key={`projects-${language}`}
       >
-        <Title className="project-title">{t.title}</Title>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Title className="project-title">{t.title}</Title>
+        </motion.div>
         <ProjectsGrid>
           {projects.map((project, index) => (
-            <ProjectCard  key={index} {...project} isRTL={isRTL} />
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+            >
+              <ProjectCard {...project} isRTL={isRTL} />
+            </motion.div>
           ))}
         </ProjectsGrid>
       </motion.div>
