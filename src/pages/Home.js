@@ -40,7 +40,7 @@ const Home = () => {
           </SpotlightText>
         </TextSection>
         <ImageSection className="home-img">
-          <CircularImage src="/profile3.png" size="medium" circular />
+          <CircularImage src={`${process.env.PUBLIC_URL}/profile3.png`} size="medium" circular />
         </ImageSection>
       </ContentWrapper>
     </MainContainer>

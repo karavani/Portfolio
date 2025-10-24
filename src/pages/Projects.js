@@ -19,33 +19,33 @@ const Projects = () => {
   const projects = [
     {
       ...t.scholarshipBot,
-      image: "/scholarshipBot.jpg",
+      image: `${process.env.PUBLIC_URL}/scholarshipBot.jpg`,
       live: "https://wa.me/+972553055698",
     },
     {
       ...t.digilog,
-      image: "/digilog.png",
+      image: `${process.env.PUBLIC_URL}/digilog.png`,
       live: "https://www.digilog.shop/",
     },
     {
       ...t.surfSpots,
-      image: "/surfspots.png",
+      image: `${process.env.PUBLIC_URL}/surfspots.png`,
       github: "https://github.com/noamkaravani/surf-forecast",
       live: "https://karavani.github.io/surf-forecast/",
     },
     {
       ...t.vacationApp,
-      image: "/vacation.png",
+      image: `${process.env.PUBLIC_URL}/vacation.png`,
       github: "https://github.com/noamkaravani/vacation-app",
     },
     {
       ...t.supermarketApp,
-      image: "/supermarket.jpg",
+      image: `${process.env.PUBLIC_URL}/supermarket.jpg`,
       github: "https://github.com/noamkaravani/supermarket-app",
     },
     {
       ...t.sudokuGame,
-      image: "/sudoku.png",
+      image: `${process.env.PUBLIC_URL}/sudoku.png`,
       github: "https://github.com/noamkaravani/sudokusite",
       live: "https://karavani.github.io/sudokusite/",
     },
