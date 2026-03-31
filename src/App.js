@@ -9,6 +9,9 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Gigs from './components/projects/Gigs';
 import Layout from './components/layout/Layout';
+import Timeline from './components/timeline/Timeline';
+import ScrollProgress from './components/ui/ScrollProgress';
+import CustomCursor from './components/ui/CustomCursor';
 
 const theme = {
   colors: {
@@ -23,6 +26,8 @@ const App = () => {
   return (
     <LanguageProvider>
       <ThemeProvider theme={theme}>
+        <CustomCursor />
+        <ScrollProgress />
         <Header />
         <Layout>
           <section id="home">
@@ -30,6 +35,9 @@ const App = () => {
           </section>
           <section id="about">
             <About />
+          </section>
+          <section id="timeline">
+            <Timeline />
           </section>
           <section id="projects">
             <Projects />

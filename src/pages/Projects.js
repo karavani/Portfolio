@@ -7,31 +7,9 @@ import ProjectCard from "../components/projects/ProjectCard";
 
 const Projects = () => {
   const { language } = useContext(LanguageContext);
-
   const t = translations[language]?.projects || translations["en"].projects;
   const isRTL = language === "he";
 
-  // useEffect(() => {
-  //   // נקה את כל ה-ScrollReveal הקיים
-  //   ScrollReveal().clean('.project-title');
-  //   ScrollReveal().clean('.project-card');
-
-  //   const cleanupTimeout = setTimeout(() => {
-  //     const sr = ScrollReveal({
-  //       origin: 'top',
-  //       distance: '80px',
-  //       duration: 2000,
-  //       reset: true,
-  //     });
-
-  //     sr.reveal('.project-title', {});
-  //     sr.reveal('.project-card', {});
-  //   }, 150);
-
-  //   return () => {
-  //     clearTimeout(cleanupTimeout);
-  //   };
-  // }, [language]);
   const projects = [
     {
       ...t.scholarshipBot,
@@ -70,25 +48,32 @@ const Projects = () => {
   return (
     <ProjectsContainer dir={isRTL ? "rtl" : "ltr"}>
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
         key={`projects-${language}`}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
       >
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Title className="project-title">{t.title}</Title>
-        </motion.div>
+        <TitleArea>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-60px" }}
+            transition={{ duration: 0.7 }}
+          >
+            <Title>{t.title}</Title>
+            <TitleUnderline />
+          </motion.div>
+        </TitleArea>
+
         <ProjectsGrid>
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
             >
               <ProjectCard {...project} isRTL={isRTL} />
             </motion.div>
@@ -100,23 +85,39 @@ const Projects = () => {
 };
 
 const ProjectsContainer = styled.div`
-  padding: 4rem 2rem;
-  background: #f8f9fa;
+  padding: 5rem 2rem;
+  background: #f8f9ff;
   direction: ${(props) => props.dir};
 `;
 
-const Title = styled.h1`
+const TitleArea = styled.div`
   text-align: center;
   margin-bottom: 3rem;
-  font-size: 2.5rem;
-  color: #333;
+`;
+
+const Title = styled.h1`
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+
+const TitleUnderline = styled.div`
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0077ff, #8800ff);
+  border-radius: 2px;
+  margin: 0 auto;
 `;
 
 const ProjectsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 2rem 0;
   max-width: 1200px;
   margin: 0 auto;
   justify-items: center;

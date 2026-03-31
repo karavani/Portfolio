@@ -10,6 +10,14 @@ export const translations = {
       greeting: "Hi, I'm",
       name: "Noam Karavani",
       role: "Full Stack Developer",
+      roles: [
+        "Full Stack Developer",
+        "Website Builder",
+        "Next.js Developer",
+        "SaaS Systems Builder",
+        "AI-Powered Developer",
+        "Smart & Scalable Solutions"
+      ],
       description: "Passionate about creating web applications with modern technologies"
     },
     about: {
@@ -183,6 +191,48 @@ export const translations = {
         ]
       }
     },
+    timeline: {
+      title: "My Journey",
+      subtitle: "From bootcamp to leading enterprise development",
+      milestones: [
+        {
+          year: "2021",
+          icon: "🎓",
+          title: "Full Stack Bootcamp",
+          description: "Graduated from John Bryce Academy, Tel Aviv — 476 hours of intensive Full Stack development with an average score of 97. Mastered React, Node.js, and modern web fundamentals."
+        },
+        {
+          year: "2021–2024",
+          icon: "⚡",
+          title: "Matrix — Salesforce Developer",
+          description: "Built scalable LWC components and Visualforce pages for enterprise Community Sites. Worked with Apex, Triggers, and SOQL. Delivered UI testing with Selenium in fast-paced Agile teams."
+        },
+        {
+          year: "2024",
+          icon: "🚀",
+          title: "Elad Systems — Salesforce Developer",
+          description: "Led front-end development of large-scale Salesforce Community Sites using LWC. Integrated REST APIs for real-time data, implemented modern UI/UX, and collaborated on Apex & SOQL backend logic."
+        },
+        {
+          year: "2025",
+          icon: "💼",
+          title: "Mimun Yashir — Salesforce Developer",
+          description: "Leading front-end development for enterprise-grade Salesforce platforms — delivering responsive, accessible LWC interfaces in close partnership with designers and stakeholders."
+        },
+        {
+          year: "Always",
+          icon: "🛠️",
+          title: "Freelance & Side Projects",
+          description: "WhatsApp scholarship bot (Node.js + Twilio), Surf Spots app (React + Leaflet), LED solutions website, and more. Currently exploring Next.js, AI integrations, and SaaS products."
+        },
+        {
+          year: "Now",
+          icon: "🌟",
+          title: "Salesforce + Full Stack Expert",
+          description: "Combining deep Salesforce expertise (LWC, Apex, Community Sites) with modern full-stack skills — React, Next.js, Node.js, AWS — to build smart, scalable solutions for ambitious clients."
+        }
+      ]
+    },
     footer: {
       rights: "All Rights Reserved",
       developer: "Noam Karavani",
@@ -203,7 +253,15 @@ export const translations = {
     home: {
       greeting: "היי, אני",
       name: "נועם קרואני",
-      role: "מפתח פול סטאק",
+      role: "מפתח Full Stack",
+      roles: [
+        "מפתח Full Stack",
+        "בונה אתרים מודרניים",
+        "מפתח Next.js",
+        "בונה מערכות SaaS",
+        "מפתח בשילוב כלי AI",
+        "פתרונות חכמים ומורכבים"
+      ],
       description: "בעל תשוקה ליצירת אפליקציות ווב עם טכנולוגיות מודרניות"
     },
     about: {
@@ -376,6 +434,48 @@ export const translations = {
           "דוחות וניתוח התנהגות משתמשים"
         ]
       }
+    },
+    timeline: {
+      title: "המסע שלי",
+      subtitle: "מבוטקמפ להובלת פיתוח ארגוני",
+      milestones: [
+        {
+          year: "2021",
+          icon: "🎓",
+          title: "בוטקמפ Full Stack",
+          description: "סיימתי את אקדמיית ג'ון ברייס, תל אביב — 476 שעות פיתוח Full Stack עם ציון ממוצע 97. שלטתי ב-React, Node.js ויסודות פיתוח ווב מודרני."
+        },
+        {
+          year: "2021–2024",
+          icon: "⚡",
+          title: "מטריקס — מפתח Salesforce",
+          description: "בניתי רכיבי LWC וVFP לאתרי Community Site ארגוניים. עבדתי עם Apex, Triggers ו-SOQL. ביצעתי בדיקות UI עם Selenium בצוותי Agile."
+        },
+        {
+          year: "2024",
+          icon: "🚀",
+          title: "אלעד מערכות — מפתח Salesforce",
+          description: "הובלתי פיתוח צד לקוח לאתרי Salesforce Community Site בקנה מידה גדול. שילוב REST APIs לעיבוד נתונים בזמן אמת, ממשקי UI/UX מודרניים ו-Apex Backend."
+        },
+        {
+          year: "2025",
+          icon: "💼",
+          title: "מימון ישיר — מפתח Salesforce",
+          description: "מוביל פיתוח צד לקוח לפלטפורמות Salesforce ארגוניות — ממשקי LWC רספונסיביים ונגישים, בשיתוף פעולה עם מעצבים ובעלי עניין."
+        },
+        {
+          year: "תמיד",
+          icon: "🛠️",
+          title: "פרילנס ופרויקטים אישיים",
+          description: "בוט מלגות לווצאפ (Node.js + Twilio), אפליקציית נקודות גלישה (React + Leaflet), אתר Digilog ועוד. כיום חוקר Next.js, שילוב כלי AI ומוצרי SaaS."
+        },
+        {
+          year: "עכשיו",
+          icon: "🌟",
+          title: "מומחה Salesforce + Full Stack",
+          description: "משלב מומחיות עמוקה ב-Salesforce (LWC, Apex, Community Sites) עם כישורי Full Stack מודרניים — React, Next.js, Node.js, AWS — לפתרונות חכמים וסקיילביליים."
+        }
+      ]
     },
     footer: {
       rights: "כל הזכויות שמורות",

@@ -8,26 +8,7 @@ const Gigs = () => {
   const { language } = useContext(LanguageContext);
   const t = translations[language]?.gigs || translations["en"].gigs;
   const isRTL = language === "he";
-  
-  // useEffect(() => {
-  //   // נקה את כל ה-ScrollReveal הקיים
-  //   ScrollReveal().clean('.gig-card');
 
-  //   const cleanupTimeout = setTimeout(() => {
-  //     const sr = ScrollReveal({
-  //       origin: 'top',
-  //       distance: '80px',
-  //       duration: 2000,
-  //       reset: true,
-  //     });
-
-  //     sr.reveal('.gig-card', {});
-  //   }, 150);
-
-  //   return () => {
-  //     clearTimeout(cleanupTimeout);
-  //   };
-  // }, [language]);
   const services = [
     {
       id: "fullstack",
@@ -35,6 +16,7 @@ const Gigs = () => {
       title: t.fullstack.title,
       description: t.fullstack.description,
       features: t.fullstack.features,
+      gradient: "linear-gradient(135deg, #0077ff, #00c6ff)",
     },
     {
       id: "frontend",
@@ -42,6 +24,7 @@ const Gigs = () => {
       title: t.frontend.title,
       description: t.frontend.description,
       features: t.frontend.features,
+      gradient: "linear-gradient(135deg, #8800ff, #cc00ff)",
     },
     {
       id: "backend",
@@ -49,6 +32,7 @@ const Gigs = () => {
       title: t.backend.title,
       description: t.backend.description,
       features: t.backend.features,
+      gradient: "linear-gradient(135deg, #00b894, #00cec9)",
     },
     {
       id: "crm",
@@ -56,6 +40,7 @@ const Gigs = () => {
       title: t.crm.title,
       description: t.crm.description,
       features: t.crm.features,
+      gradient: "linear-gradient(135deg, #fd79a8, #e84393)",
     },
     {
       id: "whatsapp",
@@ -63,111 +48,154 @@ const Gigs = () => {
       title: t.whatsapp.title,
       description: t.whatsapp.description,
       features: t.whatsapp.features,
+      gradient: "linear-gradient(135deg, #25D366, #128C7E)",
     },
   ];
 
   return (
     <GigsSection>
-      <Container dir={isRTL ? "rtl" : "ltr"}>
+      <GigsInner dir={isRTL ? "rtl" : "ltr"}>
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           key={`gigs-${language}`}
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, margin: "-80px" }}
+          transition={{ duration: 0.7 }}
         >
-          <Title>{t.title}</Title>
+          <TitleArea>
+            <Title>{t.title}</Title>
+            <TitleUnderline />
+          </TitleArea>
         </motion.div>
-        <ServicesGrid className="gig-card">
+
+        <ServicesGrid>
           {services.map((service, index) => (
-            <ServiceCard
+            <motion.div
               key={service.id}
-              as={motion.div}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-              dir={isRTL ? "rtl" : "ltr"}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+              whileHover={{ y: -6 }}
             >
-              <ServiceIcon>{service.icon}</ServiceIcon>
-              <ServiceTitle>{service.title}</ServiceTitle>
-              <ServiceDescription>{service.description}</ServiceDescription>
-              <FeaturesList>
-                {service.features.map((feature, idx) => (
-                  <FeatureItem key={idx}>
-                    <FeatureIcon isRTL={isRTL}>✓</FeatureIcon>
-                    {feature}
-                  </FeatureItem>
-                ))}
-              </FeaturesList>
-            </ServiceCard>
+              <ServiceCard dir={isRTL ? "rtl" : "ltr"}>
+                <CardTopBar $gradient={service.gradient} />
+                <ServiceIconWrapper $gradient={service.gradient}>
+                  <span>{service.icon}</span>
+                </ServiceIconWrapper>
+                <ServiceTitle>{service.title}</ServiceTitle>
+                <ServiceDescription>{service.description}</ServiceDescription>
+                <FeaturesList>
+                  {service.features.map((feature, idx) => (
+                    <FeatureItem key={idx} $isRTL={isRTL}>
+                      <CheckMark $gradient={service.gradient}>✓</CheckMark>
+                      {feature}
+                    </FeatureItem>
+                  ))}
+                </FeaturesList>
+              </ServiceCard>
+            </motion.div>
           ))}
         </ServicesGrid>
-      </Container>
+      </GigsInner>
     </GigsSection>
   );
 };
 
 const GigsSection = styled.section`
-  padding: 4rem 0;
-  background: #f8f9fa;
+  padding: 5rem 0;
+  background: #ffffff;
 `;
 
-const Container = styled.div`
+const GigsInner = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 2rem;
   direction: ${(props) => props.dir};
   text-align: ${(props) => (props.dir === "rtl" ? "right" : "left")};
 `;
 
-const Title = styled.h2`
+const TitleArea = styled.div`
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  color: #333;
+  margin-bottom: 3.5rem;
+`;
+
+const Title = styled.h2`
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 0.5rem;
 
   @media (max-width: 768px) {
     font-size: 2rem;
   }
 `;
 
+const TitleUnderline = styled.div`
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0077ff, #8800ff);
+  border-radius: 2px;
+  margin: 0 auto;
+`;
+
 const ServicesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
 `;
 
 const ServiceCard = styled.div`
-  background: white;
-  border-radius: 12px;
+  background: #fafafa;
+  border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #efefef;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
   direction: ${(props) => props.dir};
   text-align: ${(props) => (props.dir === "rtl" ? "right" : "left")};
 
   &:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    border-color: transparent;
   }
 `;
 
-const ServiceIcon = styled.div`
-  font-size: 3rem;
+const CardTopBar = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: ${(p) => p.$gradient};
+`;
+
+const ServiceIconWrapper = styled.div`
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 12px;
+  background: ${(p) => p.$gradient};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
-  text-align: center;
 `;
 
 const ServiceTitle = styled.h3`
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #333;
-  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #111;
 `;
 
 const ServiceDescription = styled.p`
-  color: #666;
-  margin-bottom: 1.5rem;
+  color: #777;
+  margin-bottom: 1.2rem;
   line-height: 1.6;
+  font-size: 0.95rem;
 `;
 
 const FeaturesList = styled.ul`
@@ -178,15 +206,21 @@ const FeaturesList = styled.ul`
 
 const FeatureItem = styled.li`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
   color: #555;
+  font-size: 0.9rem;
+  flex-direction: ${(p) => (p.$isRTL ? "row-reverse" : "row")};
 `;
 
-const FeatureIcon = styled.span`
-  color: #0077ff;
-  margin-${(props) => (props.isRTL ? "left" : "right")}: 0.5rem;
-  font-weight: bold;
+const CheckMark = styled.span`
+  background: ${(p) => p.$gradient};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  flex-shrink: 0;
 `;
 
 export default Gigs;
