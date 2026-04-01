@@ -104,7 +104,7 @@ const Gigs = () => {
 
 const GigsSection = styled.section`
   padding: 5rem 0;
-  background: #ffffff;
+  background: linear-gradient(160deg, #0d0519 0%, #180832 50%, #0d0d22 100%);
 `;
 
 const GigsInner = styled.div`
@@ -123,7 +123,7 @@ const TitleArea = styled.div`
 const Title = styled.h2`
   font-size: 2.8rem;
   font-weight: 800;
-  color: #111;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 
   @media (max-width: 768px) {
@@ -146,20 +146,21 @@ const ServicesGrid = styled.div`
 `;
 
 const ServiceCard = styled.div`
-  background: #fafafa;
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
-  border: 1px solid #efefef;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   direction: ${(props) => props.dir};
   text-align: ${(props) => (props.dir === "rtl" ? "right" : "left")};
 
   &:hover {
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
-    border-color: transparent;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(136, 0, 255, 0.4);
+    box-shadow: 0 8px 40px rgba(136, 0, 255, 0.15);
   }
 `;
 
@@ -188,11 +189,11 @@ const ServiceTitle = styled.h3`
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.6rem;
-  color: #111;
+  color: rgba(255, 255, 255, 0.95);
 `;
 
 const ServiceDescription = styled.p`
-  color: #777;
+  color: rgba(255, 255, 255, 0.55);
   margin-bottom: 1.2rem;
   line-height: 1.6;
   font-size: 0.95rem;
@@ -209,7 +210,7 @@ const FeatureItem = styled.li`
   align-items: flex-start;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: rgba(255, 255, 255, 0.65);
   font-size: 0.9rem;
   flex-direction: ${(p) => (p.$isRTL ? "row-reverse" : "row")};
 `;

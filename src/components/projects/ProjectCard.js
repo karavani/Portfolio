@@ -2,34 +2,34 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const ProjectCard = ({ title, description, technologies, image, github, live, isRTL }) => {
-  const techArray = technologies.split(', ');
-  
+const ProjectCard = ({ title, description, technologies, image, github, live, isRTL, githubLabel = "GitHub", liveLabel = "Live Demo" }) => {
+  const techArray = typeof technologies === "string" ? technologies.split(", ") : [];
+
   return (
-    <Card 
-    className="project-card"
+    <Card
+      className="project-card"
       as={motion.div}
       whileHover={{ y: -5 }}
-      dir={isRTL ? 'rtl' : 'ltr'}
+      dir={isRTL ? "rtl" : "ltr"}
     >
       <ProjectImage src={image} alt={title} />
       <ProjectContent>
         <ProjectTitle>{title}</ProjectTitle>
         <ProjectDescription>{description}</ProjectDescription>
         <TechStack>
-          {techArray.map((tech, index) => (
-            <TechItem key={index}>{tech}</TechItem>
+          {techArray.map((tech) => (
+            <TechItem key={tech}>{tech}</TechItem>
           ))}
         </TechStack>
         <LinksContainer>
           {github && (
             <ProjectLink href={github} target="_blank" rel="noopener noreferrer">
-              GitHub
+              {githubLabel}
             </ProjectLink>
           )}
           {live && (
             <ProjectLink href={live} target="_blank" rel="noopener noreferrer">
-              Live Demo
+              {liveLabel}
             </ProjectLink>
           )}
         </LinksContainer>

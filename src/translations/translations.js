@@ -7,229 +7,205 @@ export const translations = {
       contact: "Contact"
     },
     home: {
-      greeting: "Hi, I'm",
+      greeting: "Hey, I'm",
       name: "Noam Karavani",
       role: "Full Stack Developer",
+      tagline: "I build digital products that actually work — websites, systems, and smart automations.",
+      cta: {
+        primary: "Let's Talk",
+        secondary: "My Work"
+      },
       roles: [
         "Full Stack Developer",
-        "Website Builder",
+        "Website Creator",
         "Next.js Developer",
         "SaaS Systems Builder",
         "AI-Powered Developer",
-        "Smart & Scalable Solutions"
+        "Your Tech Partner"
       ],
       description: "Passionate about creating web applications with modern technologies"
     },
     about: {
       title: "Hi, I'm Noam Karavani",
-      intro: "I am Noam Karavani, a passionate Full Stack Web Developer with almost 2.5 years of experience in the industry.",
-      background: {
-        title: "Professional Background",
-        content: "Over the past few years, I have had the opportunity to work at Matrix Company, where I was involved in a variety of projects for government offices, banks, and other organizations."
-      },
-      skills: {
-        title: "Skills and Expertise",
-        content: "My primary programming language is JavaScript, and I specialize in frontend development. I am proficient in working with frameworks and tools such as Lightning Web Components (LWC), React, and Visual Studio Code."
-      },
-      personalAttributes: {
-        title: "Personal Attributes",
-        content: "What drives me in my work is the blend of creativity and problem-solving. I thrive on the challenges that web development presents, and I enjoy exploring new technologies and libraries."
-      },
-      achievements: {
-        title: "Achievements",
-        content: "My most significant achievements lie in the unique and out-of-the-box solutions I have provided to our clients."
-      },
-      careerGoals: {
-        title: "Career Goals",
-        content: "My aspirations are to continue developing cutting-edge web technologies, lead projects, and mentor junior developers."
-      },
-      education: {
-        title: "Education",
-        content: "I am a certified Full Stack Web Developer, having completed my training at John Bryce."
-      },
-      interests: {
-        title: "Interests",
-        content: "Outside of work, I enjoy exploring new projects and experimenting with different libraries. Additionally, I like to play the guitar and surf."
-      },
-      metaTitle: "Noam Karavani - Full Stack Developer",
-      metaDescription: "Full Stack Developer specializing in React.js, Angular, Node.js, and Salesforce. Creating efficient and customized digital solutions",
-      metaKeywords: "web development, React, Angular, Node.js, Salesforce, Full Stack, software development, Noam Karavani",
       
       summary: {
         title: "About Me",
-        content: `I'm a passionate developer with a strong focus on delivering high-quality, user-centric web applications. 
-        With expertise in technologies like React.js, Angular, Node.js, and Salesforce, I specialize in creating efficient and scalable solutions.
+        content: `Coding clicked for me the moment I realized you can build almost anything with it — and that moment never left.
 
-        My portfolio showcases a variety of projects, including a surf forecast app, e-commerce platforms, and advanced Salesforce components.
+I went from a 6-month bootcamp to leading front-end development on enterprise Salesforce platforms for banks and financial institutions. Along the way I built my own tools: a WhatsApp scholarship bot, a surf forecast map, and freelance websites for real businesses.
 
-        In addition to coding, I enjoy surfing, playing the guitar, and exploring creative ways to combine technology with personal interests. 
-        Always eager to learn and grow, I thrive in collaborative environments and embrace challenges with a problem-solving mindset.`
+Today I sit at the intersection of full-stack development and Salesforce — which means I can take a product from idea to production, whether that's a sleek React app, a smart automation, or a complex CRM system.
+
+I work fast, communicate clearly, and genuinely care about what I ship.`
       },
       
       expertise: {
-        title: "Areas of Expertise",
+        title: "What I Do Well",
         areas: [
           {
             title: "Front-end Development",
-            description: "Specializing in React.js and Angular, with focus on performance and user experience"
+            description: "First impressions are everything. I build interfaces that are fast, intuitive, and look great on every screen."
           },
           {
-            title: "Back-end Development",
-            description: "Building servers and APIs with Node.js, Express, and MongoDB"
+            title: "Back-end & APIs",
+            description: "The stuff users never see but always feel. Clean, reliable server logic and APIs that power your product without breaking."
           },
           {
-            title: "Salesforce",
-            description: "Developing custom Salesforce solutions and integrations"
+            title: "Salesforce / LWC",
+            description: "Most businesses use 10% of Salesforce. I've spent years unlocking the rest — custom LWC components, Apex logic, and Community Sites."
           },
           {
-            title: "Web Development",
-            description: "Creating modern web applications with emphasis on responsive design and SEO"
+            title: "Automations & Bots",
+            description: "WhatsApp bots, AI integrations, workflow automation — if there's repetitive work, there's usually a smarter way."
           }
         ]
       },
       
       cta: {
-        title: "Let's Create Something Amazing Together",
-        description: "Looking for a developer to turn your idea into reality?",
+        title: "Got an idea? Let's make it real.",
+        description: "Whether you're hiring or building — I'd love to hear what you're working on.",
         buttonText: "Let's Talk"
       }
     },
     projects: {
-      title: "My Projects",
-      technologies: "Technologies",
-      liveDemo: "Live Demo",
-      repository: "Repository",
+      title: "Things I've Built",
+      technologies: "Tech Stack",
+      liveDemo: "See it Live",
+      repository: "View Code",
       surfSpots: {
         title: "Surf Spots Israel",
-        description: "Interactive map application showcasing Israel's surf spots with real-time reviews and spot information. Built with React.js and Redux.",
+        description: "I wanted to find the best surf spots without texting 10 people every morning. So I built a real-time interactive map with community reviews and spot conditions — and now I use it before every session.",
         technologies: "React.js, Redux, Leaflet Maps, GitHub Pages"
       },
       vacationApp: {
         title: "Vacation App",
-        description: "Developed with React.js, showcasing proficiency in Redux, web sockets, Node.js, CRUD, and more.",
-        technologies: "React.js, Redux, Node.js"
+        description: "A full-stack vacation management platform built to push my limits — real-time updates via WebSockets, full CRUD with Node.js backend, and a Redux-powered React front-end. More complex than it looks.",
+        technologies: "React.js, Redux, Node.js, WebSockets"
       },
       supermarketApp: {
         title: "Supermarket App",
-        description: "Developed with Angular, Node.js, Material UI, and Reactive forms.",
+        description: "An Angular deep-dive: reactive forms, dynamic cart management, and a Node.js API underneath. Built this to prove I could do complex state management outside of React — and it worked.",
         technologies: "Angular, Node.js, Material UI"
       },
       sudokuGame: {
         title: "Sudoku Game",
-        description: "Developed with JavaScript, HTML, and CSS.",
+        description: "Pure vanilla JavaScript. No frameworks, no libraries — just logic. A clean solver and playable game that I built when I wanted to go back to basics and really understand the language.",
         technologies: "JavaScript, HTML, CSS"
       },
       scholarshipBot: {
-        title: "Scholarship Whatsapp Bot",
-        description: "Developed with node.js and twilio.",
-        technologies: "Whatsapp api, Node.js, Twilio"
+        title: "WhatsApp Scholarship Bot",
+        description: "A friend mentioned how hard it is to track scholarship deadlines. Two weeks later I shipped a WhatsApp bot that sends automatic reminders and answers queries — running 24/7 on Node.js and Twilio.",
+        technologies: "Node.js, Twilio, WhatsApp API"
       },
       digilog: {
-        title: "Digilog - LED Experts",
-        description: "Website for a business in the field of LED solutions",
+        title: "Digilog — LED Experts",
+        description: "A local business needed a proper online presence, not just a Facebook page. I built them a clean, fast, mobile-friendly site that actually represents what they do — and they use it to this day.",
         technologies: "React.js, HTML, CSS, JavaScript"
       }
     },
     contact: {
-      title: "Contact Me",
-      subtitle: "I'd love to hear from you! Choose your preferred way to connect",
+      title: "Let's Talk",
+      subtitle: "Quick question? Big project? Just want to say hi? — reach out. I respond fast.",
       email: "Email",
       linkedin: "LinkedIn",
       whatsapp: "WhatsApp",
-      whatsappText: "Available for quick chat"
+      github: "GitHub",
+      whatsappText: "Usually replies within the hour"
     },
     gigs: {
-      title: 'Our Services',
+      title: 'How I Can Help',
       fullstack: {
-        title: 'Full Stack Development',
-        description: 'End-to-end application development',
+        title: 'Full Product Development',
+        description: 'You have an idea. I\'ll take it from concept to live product — design, build, deploy.',
         features: [
-          'Building advanced web applications',
-          'Modern UI development',
-          'System architecture planning and implementation',
-          'Integration with external services'
+          'From wireframe to working product',
+          'Modern, responsive UI that users love',
+          'Solid architecture that scales',
+          'Third-party integrations handled'
         ]
       },
       frontend: {
-        title: 'Front End Development',
-        description: 'UI design and implementation',
+        title: 'Front-End Development',
+        description: 'The interface is what your users see. I make sure it\'s fast, beautiful, and intuitive.',
         features: [
-          'Responsive interface development',
+          'Pixel-perfect responsive design',
+          'Smooth animations and interactions',
           'Performance optimization',
-          'Advanced animations and UI',
-          'Cross-browser compatibility'
+          'Consistent across all browsers and devices'
         ]
       },
       backend: {
-        title: 'Back End Development',
-        description: 'Server and infrastructure development',
+        title: 'Back-End & APIs',
+        description: 'The engine behind your product. Reliable, secure, and built to last.',
         features: [
-          'API design and implementation',
-          'Database management',
-          'Information security',
-          'Performance optimizations'
+          'Clean REST API design',
+          'Database architecture and management',
+          'Authentication and security',
+          'Optimized for speed and scale'
         ]
       },
       crm: {
-        title: "CRM Development & Implementation",
-        description: "Development and implementation of Salesforce and ZOHO systems tailored to your business needs",
+        title: "Salesforce Development",
+        description: "Salesforce is powerful. Most businesses use 10% of it. I unlock the rest.",
         features: [
-          "Custom Salesforce implementation",
-          "ZOHO automation and process development",
-          "Integration with existing systems",
-          "Ongoing support and training"
+          "Custom LWC components and Community Sites",
+          "Apex logic, triggers, and automation flows",
+          "REST API integrations with external systems",
+          "Support, maintenance, and training"
         ]
       },
       whatsapp: {
-        title: "WhatsApp Bot Development",
-        description: "Smart bot development for your business WhatsApp",
+        title: "WhatsApp Bot",
+        description: "Stop missing leads after hours. A bot that responds, qualifies, and follows up — 24/7.",
         features: [
-          "Automated customer responses",
-          "Order and request management",
-          "CRM system integration",
-          "User behavior analytics and reporting"
+          "Automated replies and lead capture",
+          "Order and appointment management",
+          "CRM integration so nothing falls through",
+          "Custom conversation flows for your business"
         ]
       }
     },
     timeline: {
       title: "My Journey",
-      subtitle: "From bootcamp to leading enterprise development",
+      subtitle: "The moments that shaped who I am as a developer",
+      scrollHint: "Scroll down to reveal the journey",
+      swipeHint: "Swipe to explore",
       milestones: [
         {
           year: "2021",
           icon: "🎓",
-          title: "Full Stack Bootcamp",
-          description: "Graduated from John Bryce Academy, Tel Aviv — 476 hours of intensive Full Stack development with an average score of 97. Mastered React, Node.js, and modern web fundamentals."
+          title: "The Bootcamp",
+          description: "I sat in a room for 6 months and came out a developer. 476 hours, a 97 average — but more importantly, I was completely hooked. That was the moment I knew this was it."
         },
         {
           year: "2021–2024",
           icon: "⚡",
-          title: "Matrix — Salesforce Developer",
-          description: "Built scalable LWC components and Visualforce pages for enterprise Community Sites. Worked with Apex, Triggers, and SOQL. Delivered UI testing with Selenium in fast-paced Agile teams."
+          title: "Matrix — First Real Job",
+          description: "My first role threw me straight into the deep end — enterprise projects for banks and government agencies. Fast Agile cycles, high stakes, real clients. I learned more in the first 3 months than I expected to learn in a year."
         },
         {
           year: "2024",
           icon: "🚀",
-          title: "Elad Systems — Salesforce Developer",
-          description: "Led front-end development of large-scale Salesforce Community Sites using LWC. Integrated REST APIs for real-time data, implemented modern UI/UX, and collaborated on Apex & SOQL backend logic."
+          title: "Elad Systems — Owning the Front-End",
+          description: "This is where I stopped executing and started leading. I shaped the UI/UX of large-scale Salesforce platforms, integrated real-time APIs, and became the person people came to when something had to look and work great."
         },
         {
           year: "2025",
           icon: "💼",
-          title: "Mimun Yashir — Salesforce Developer",
-          description: "Leading front-end development for enterprise-grade Salesforce platforms — delivering responsive, accessible LWC interfaces in close partnership with designers and stakeholders."
+          title: "Mimun Yashir — Enterprise Scale",
+          description: "Now I bring everything I've learned to one of the most demanding Salesforce environments I've worked in. Responsive, accessible, polished — the bar is high and I like it that way."
         },
         {
           year: "Always",
           icon: "🛠️",
-          title: "Freelance & Side Projects",
-          description: "WhatsApp scholarship bot (Node.js + Twilio), Surf Spots app (React + Leaflet), LED solutions website, and more. Currently exploring Next.js, AI integrations, and SaaS products."
+          title: "Side Projects — Building for Fun",
+          description: "These are the projects I build because I want to, not because I have to. A WhatsApp bot that helps students find scholarships. A surf forecast map. A website for a local LED business. Each one taught me something the day job couldn't."
         },
         {
           year: "Now",
           icon: "🌟",
-          title: "Salesforce + Full Stack Expert",
-          description: "Combining deep Salesforce expertise (LWC, Apex, Community Sites) with modern full-stack skills — React, Next.js, Node.js, AWS — to build smart, scalable solutions for ambitious clients."
+          title: "Where I Am Today",
+          description: "Full-stack skills, deep Salesforce expertise, and a growing interest in AI integrations and SaaS products. If you're building something ambitious — I'd love to be part of it."
         }
       ]
     },
@@ -254,226 +230,202 @@ export const translations = {
       greeting: "היי, אני",
       name: "נועם קרואני",
       role: "מפתח Full Stack",
+      tagline: "אני בונה דברים שעובדים — אתרים, מערכות ואוטומציות חכמות.",
+      cta: {
+        primary: "בואו נדבר",
+        secondary: "הפרויקטים שלי"
+      },
       roles: [
         "מפתח Full Stack",
         "בונה אתרים מודרניים",
         "מפתח Next.js",
         "בונה מערכות SaaS",
         "מפתח בשילוב כלי AI",
-        "פתרונות חכמים ומורכבים"
+        "השותף הטכנולוגי שלך"
       ],
       description: "בעל תשוקה ליצירת אפליקציות ווב עם טכנולוגיות מודרניות"
     },
     about: {
       title: "נעים להכיר, אני נועם קרואני",
-      intro: "אני נועם קרואני, מפתח פול סטאק בעל ניסיון של כמעט שנתיים וחצי בתעשייה.",
-      background: {
-        title: "רקע מקצועי:",
-        content: "במהלך השנים האחרונות, עבדתי בחברת מטריקס, שם הייתי מעורב במגוון פרויקטים עבור משרדי ממשלה, בנקים וארגונים נוספים."
-      },
-      skills: {
-        title: "כישורים ומומחיות:",
-        content: "שפת התכנות העיקרית שלי היא JavaScript, ואני מתמחה בפיתוח צד לקוח. אני שולט בעבודה עם frameworks וכלים כמו Lightning Web Components (LWC), React ו-Visual Studio Code."
-      },
-      personalAttributes: {
-        title: "תכונות אישיות:",
-        content: "מה שמניע אותי בעבודתי הוא השילוב בין יצירתיות ופתרון בעיות. אני נהנה מהאתגרים שפיתוח ווב מציב ואוהב לחקור טכנולוגיות וספריות חדשות."
-      },
-      achievements: {
-        title: "הישגים ואבני דרך:",
-        content: "ההישגים המשמעותיים ביותר שלי טמונים בפתרונות הייחודיים והיצירתיים שסיפקתי ללקוחותינו."
-      },
-      careerGoals: {
-        title: "מטרות קריירה:",
-        content: "השאיפות שלי הן להמשיך לפתח טכנולוגיות ווב מתקדמות, להוביל פרויקטים ולחנוך מפתחים מתחילים."
-      },
-      education: {
-        title: "השכלה והכשרה:",
-        content: "אני מפתח פול סטאק מוסמך, בוגר הכשרה בג'ון ברייס."
-      },
-      interests: {
-        title: "תחומי עניין ותחביבים:",
-        content: "מחוץ לעבודה, אני נהנה לחקור פרויקטים חדשים ולהתנסות בספריות שונות. בנוסף, אני אוהב לנגן בגיטרה ולגלוש."
-      },
-      metaTitle: "נועם קרואני - מפתח Full Stack",
-      metaDescription: "מפתח Full Stack עם התמחות ב-React.js, Angular, Node.js ו-Salesforce. יוצר פתרונות דיגיטליים יעילים ומותאמים אישית",
-      metaKeywords: "פיתוח אתרים, React, Angular, Node.js, Salesforce, Full Stack, פיתוח תוכנה, נועם קרואני",
       
       summary: {
         title: "קצת עליי",
-        content: `אני מפתח תוכנה נלהב עם התמקדות בבניית אפליקציות ווב איכותיות וממוקדות משתמש. 
-        עם מומחיות בטכנולוגיות כמו React.js, Angular, Node.js ו-Salesforce, אני מתמחה ביצירת פתרונות יעילים וסקיילבילים.
-        
-        תיק העבודות שלי מציג מגוון פרויקטים, כולל אפליקציית תחזית גלישה, פלטפורמות מסחר אלקטרוני ורכיבי Salesforce מתקדמים.
-        
-        מעבר לקוד, אני נהנה מגלישת גלים, נגינה בגיטרה וחיפוש דרכים יצירתיות לשלב טכנולוגיה עם תחומי עניין אישיים. 
-        תמיד להוט ללמוד ולהתפתח, אני משגשג בסביבות שיתופיות ומתמודד עם אתגרים בגישה של פתרון בעיות.`
+        content: `הרגע שהבנתי שאפשר לבנות כמעט הכל עם קוד — זה היה ה-wow moment שלי. ומאז הוא לא עזב אותי.
+
+התחלתי עם בוטקמפ של 6 חודשים, ומשם הלכתי ישר לפרויקטים ארגוניים — בנקים, מוסדות ממשלתיים, פלטפורמות Salesforce בקנה מידה גדול. לאורך הדרך בניתי גם דברים משלי: בוט WhatsApp שעוזר לסטודנטים למצוא מלגות, מפת גלישה בזמן אמת, אתר לעסק מקומי.
+
+היום אני יושב בצומת בין Full Stack לבין Salesforce — וזה אומר שאני יכול לקחת מוצר מרעיון לפרודקשן, בין אם זה אתר, מערכת CRM, אוטומציה חכמה, או שילוב של הכל.
+
+עובד מהר, מתקשר בבהירות, ואכפת לי ממה שאני מוציא.`
       },
       
       expertise: {
-        title: "תחומי התמחות",
+        title: "מה אני עושה טוב",
         areas: [
           {
             title: "פיתוח Front-end",
-            description: "התמחות ב-React.js ו-Angular, עם דגש על ביצועים וחוויית משתמש"
+            description: "רושם ראשוני הוא הכל. אני בונה ממשקים שמהירים, אינטואיטיביים ונראים מעולה בכל מסך."
           },
           {
-            title: "פיתוח Back-end",
-            description: "בניית שרתים ו-API עם Node.js, Express ו-MongoDB"
+            title: "Back-end ו-APIs",
+            description: "הדברים שהמשתמשים לא רואים, אבל תמיד מרגישים. לוגיקת שרת נקייה ו-APIs שעובדים בלי להישבר."
           },
           {
-            title: "Salesforce",
-            description: "פיתוח פתרונות Salesforce מותאמים אישית ואינטגרציות"
+            title: "Salesforce / LWC",
+            description: "רוב העסקים משתמשים ב-10% מהיכולות של Salesforce. אני מבלה שנים על פתיחת השאר — רכיבי LWC, Apex, ו-Community Sites."
           },
           {
-            title: "Web Development",
-            description: "יצירת אפליקציות ווב מודרניות עם דגש על responsive design ו-SEO"
+            title: "אוטומציות ובוטים",
+            description: "בוטים לווצאפ, שילוב כלי AI, אוטומציות לתהליכים — אם יש עבודה שחוזרת על עצמה, יש דרך חכמה יותר לעשות אותה."
           }
         ]
       },
       
       cta: {
-        title: "בואו ניצור משהו מדהים ביחד",
-        description: "מחפשים מפתח שיהפוך את הרעיון שלכם למציאות?",
+        title: "יש לך רעיון? בוא נהפוך אותו למציאות.",
+        description: "מגייס או לקוח — אשמח לשמוע על מה שאתה בונה.",
         buttonText: "בואו נדבר"
       }
     },
     projects: {
-      title: "הפרויקטים שלי",
+      title: "דברים שבניתי",
       technologies: "טכנולוגיות",
-      liveDemo: "הדגמה חיה",
-      repository: "מאגר קוד",
+      liveDemo: "לצפייה חיה",
+      repository: "קוד מקור",
       surfSpots: {
         title: "נקודות גלישה בישראל",
-        description: "אפליקציית מפה אינטראקטיבית המציגה את אתרי הגלישה בישראל עם ביקורות בזמן אמת ומידע על הנקודות.",
+        description: "רציתי למצוא את הספוטים הטובים בלי לשלוח הודעות ל-10 אנשים כל בוקר. אז בניתי מפה אינטראקטיבית עם ביקורות קהילה ותנאים עדכניים — ועכשיו אני משתמש בה לפני כל ספיישן.",
         technologies: "React.js, Redux, Leaflet Maps, GitHub Pages"
       },
       vacationApp: {
         title: "אפליקציית חופשות",
-        description: "פותח עם React.js, מציג מומחיות ב-Redux, web sockets, Node.js, CRUD ועוד.",
-        technologies: "React.js, Redux, Node.js"
+        description: "פלטפורמת ניהול חופשות Full Stack שבניתי כדי לדחוף את עצמי — עדכונים בזמן אמת דרך WebSockets, CRUD מלא עם Node.js, ו-Redux בצד הלקוח. מורכב יותר ממה שנראה.",
+        technologies: "React.js, Redux, Node.js, WebSockets"
       },
       supermarketApp: {
         title: "אפליקציית סופרמרקט",
-        description: "פותח עם Angular, Node.js, Material UI וטפסים ריאקטיביים.",
+        description: "צלילה עמוקה ל-Angular: ניהול טפסים ריאקטיביים, ניהול עגלת קניות דינמי, ו-Node.js API מתחת. בניתי את זה כדי להוכיח לעצמי שאני יכול לנהל state מורכב גם מחוץ ל-React.",
         technologies: "Angular, Node.js, Material UI"
       },
       sudokuGame: {
         title: "משחק סודוקו",
-        description: "פותח עם JavaScript, HTML ו-CSS.",
+        description: "JavaScript טהור. ללא frameworks, ללא ספריות — רק לוגיקה. בניתי את זה כשרציתי לחזור לבסיס ולהבין את השפה לעומק.",
         technologies: "JavaScript, HTML, CSS"
       },
       scholarshipBot: {
         title: "בוט מלגות לווצאפ",
-        description: "פותח עם node.js and twilio.",
-        technologies: "Whatsapp api, Node.js, Twilio"
+        description: "חבר סיפר כמה קשה לעקוב אחרי מועדי הגשה למלגות. שבועיים אחר כך שלחתי בוט WhatsApp שמזכיר אוטומטית ועונה לשאלות — רץ 24/7 על Node.js ו-Twilio.",
+        technologies: "Node.js, Twilio, WhatsApp API"
       },
       digilog: {
-        title: "Digilog - מומחי לד",
-        description: "אתר לעסק בתחום פתרונות הלד",
+        title: "Digilog — מומחי לד",
+        description: "עסק מקומי שהיה זקוק לנוכחות אמיתית ברשת, לא רק עמוד פייסבוק. בניתי להם אתר נקי, מהיר ומותאם למובייל שמייצג את מה שהם עושים — ועדיין משתמשים בו.",
         technologies: "React.js, HTML, CSS, JavaScript"
       }
     },
     contact: {
-      title: "צור קשר",
-      subtitle: "אשמח לשמוע ממך! בחר את דרך התקשורת המועדפת עליך",
+      title: "בואו נדבר",
+      subtitle: "שאלה קצרה? פרויקט שלם? סתם להתייעץ? — דברו איתי. עונה מהר.",
       email: "אימייל",
       linkedin: "לינקדאין",
       whatsapp: "וואטסאפ",
-      whatsappText: "זמין לצ'אט מהיר"
+      github: "GitHub",
+      whatsappText: "בדרך כלל עונה תוך שעה"
     },
     gigs: {
-      title: 'השירותים שלנו',
+      title: 'מה אני יכול לעשות בשבילך',
       fullstack: {
-        title: 'פיתוח Full Stack',
-        description: 'פיתוח אפליקציות מקצה לקצה',
+        title: 'פיתוח מוצר מלא',
+        description: 'יש לך רעיון. אני אקח אותו מקונספט למוצר חי — עיצוב, פיתוח, העלאה לאוויר.',
         features: [
-          'בניית אפליקציות web מתקדמות',
-          'פיתוח ממשקי משתמש מודרניים',
-          'תכנון וביצוע ארכיטקטורת מערכת',
-          'אינטגרציה עם שירותים חיצוניים'
+          'מתכנון ראשוני למוצר עובד',
+          'ממשק משתמש מודרני שאנשים אוהבים',
+          'ארכיטקטורה נקייה שסקיילת',
+          'אינטגרציות עם שירותים חיצוניים'
         ]
       },
       frontend: {
-        title: 'פיתוח Front End',
-        description: 'עיצוב וביצוע ממשקי משתמש',
+        title: 'פיתוח Front-End',
+        description: 'הממשק הוא מה שהמשתמשים שלך רואים. אני מוודא שהוא מהיר, יפה ואינטואיטיבי.',
         features: [
-          'פיתוח ממשקים רספונסיביים',
+          'עיצוב רספונסיבי מדויק',
+          'אנימציות ואינטראקציות חלקות',
           'אופטימיזציה לביצועים',
-          'אנימציות וממשק משתמש מתקדם',
-          'התאמה לכל הדפדפנים'
+          'תואם לכל הדפדפנים והמכשירים'
         ]
       },
       backend: {
-        title: 'פיתוח Back End',
-        description: 'פיתוח שרת ותשתיות',
+        title: 'Back-End ו-APIs',
+        description: 'המנוע מאחורי המוצר שלך. אמין, מאובטח, ובנוי להחזיק לאורך זמן.',
         features: [
-          'תכנון וביצוע API',
-          'ניהול בסיסי נתונים',
-          'אבטחת מידע',
-          'ביצוע אופטימיזציות'
+          'תכנון REST API נקי',
+          'ארכיטקטורת בסיס נתונים וניהולה',
+          'אימות ואבטחת מידע',
+          'אופטימיזציה למהירות ולסקייל'
         ]
       },
       crm: {
-        title: "פיתוח והטמעת CRM",
-        description: "פיתוח והטמעת מערכות Salesforce ו-ZOHO המותאמות לצרכי העסק שלך",
+        title: "פיתוח Salesforce",
+        description: "רוב העסקים משתמשים ב-10% מהיכולות של Salesforce. אני פותח את השאר.",
         features: [
-          "הטמעת Salesforce מותאמת אישית",
-          "פיתוח אוטומציות ותהליכים ב-ZOHO",
-          "אינטגרציה עם מערכות קיימות",
-          "הדרכה ותמיכה שוטפת"
+          "רכיבי LWC מותאמים ו-Community Sites",
+          "לוגיקת Apex, Triggers ו-Automation Flows",
+          "אינטגרציית REST API עם מערכות חיצוניות",
+          "תמיכה שוטפת והדרכה"
         ]
       },
       whatsapp: {
-        title: "פיתוח בוט לווצאפ",
-        description: "פיתוח בוט חכם לווצאפ העסקי שלך",
+        title: "בוט לווצאפ",
+        description: "תפסיק לפספס לידים אחרי שעות. בוט שעונה, מסנן ומטפח — 24/7.",
         features: [
-          "מענה אוטומטי ללקוחות",
-          "ניהול הזמנות ובקשות",
-          "אינטגרציה עם מערכת ה-CRM",
-          "דוחות וניתוח התנהגות משתמשים"
+          "מענה אוטומטי ולכידת לידים",
+          "ניהול הזמנות ותורים",
+          "אינטגרציה עם CRM כך שכלום לא יאבד",
+          "תהליכי שיחה מותאמים לעסק שלך"
         ]
       }
     },
     timeline: {
       title: "המסע שלי",
-      subtitle: "מבוטקמפ להובלת פיתוח ארגוני",
+      subtitle: "הרגעים שעיצבו אותי כמפתח",
+      scrollHint: "גלול למטה לחשיפת כל אבני הדרך",
+      swipeHint: "החלק לגילוי הסיפור",
       milestones: [
         {
           year: "2021",
           icon: "🎓",
-          title: "בוטקמפ Full Stack",
-          description: "סיימתי את אקדמיית ג'ון ברייס, תל אביב — 476 שעות פיתוח Full Stack עם ציון ממוצע 97. שלטתי ב-React, Node.js ויסודות פיתוח ווב מודרני."
+          title: "הבוטקמפ",
+          description: "ישבתי בחדר 6 חודשים ויצאתי מפתח. 476 שעות, ציון 97 — אבל יותר חשוב מזה, יצאתי ממוכר לחלוטין. זה היה הרגע שהבנתי שזה מה שאני רוצה לעשות."
         },
         {
           year: "2021–2024",
           icon: "⚡",
-          title: "מטריקס — מפתח Salesforce",
-          description: "בניתי רכיבי LWC וVFP לאתרי Community Site ארגוניים. עבדתי עם Apex, Triggers ו-SOQL. ביצעתי בדיקות UI עם Selenium בצוותי Agile."
+          title: "מטריקס — העבודה הראשונה",
+          description: "ישר לעומק — פרויקטים ארגוניים לבנקים ומשרדי ממשלה. מחזורי Agile מהירים, לקוחות אמיתיים, סטנדרטים גבוהים. למדתי יותר ב-3 חודשים הראשונים ממה שציפיתי ללמוד בשנה שלמה."
         },
         {
           year: "2024",
           icon: "🚀",
-          title: "אלעד מערכות — מפתח Salesforce",
-          description: "הובלתי פיתוח צד לקוח לאתרי Salesforce Community Site בקנה מידה גדול. שילוב REST APIs לעיבוד נתונים בזמן אמת, ממשקי UI/UX מודרניים ו-Apex Backend."
+          title: "אלעד מערכות — להוביל, לא לבצע",
+          description: "פה הפסקתי לבצע והתחלתי להוביל. עיצבתי את ה-UI/UX של פלטפורמות Salesforce בקנה מידה גדול, שילבתי APIs בזמן אמת, והפכתי לאדם שאנשים פונים אליו כשצריך שהדברים ייראו ויעבדו טוב."
         },
         {
           year: "2025",
           icon: "💼",
-          title: "מימון ישיר — מפתח Salesforce",
-          description: "מוביל פיתוח צד לקוח לפלטפורמות Salesforce ארגוניות — ממשקי LWC רספונסיביים ונגישים, בשיתוף פעולה עם מעצבים ובעלי עניין."
+          title: "מימון ישיר — רמה ארגונית",
+          description: "עכשיו אני מביא את כל מה שצברתי לאחד מהסביבות הדורשניות ביותר שעבדתי בהן. רספונסיבי, נגיש, מלוטש — הרף גבוה ואני אוהב את זה."
         },
         {
           year: "תמיד",
           icon: "🛠️",
-          title: "פרילנס ופרויקטים אישיים",
-          description: "בוט מלגות לווצאפ (Node.js + Twilio), אפליקציית נקודות גלישה (React + Leaflet), אתר Digilog ועוד. כיום חוקר Next.js, שילוב כלי AI ומוצרי SaaS."
+          title: "פרויקטים מהלב",
+          description: "אלה הפרויקטים שאני בונה כי בא לי, לא כי חייב. בוט WhatsApp שעוזר לסטודנטים למצוא מלגות. מפת גלישה בזמן אמת. אתר לעסק מקומי. כל אחד לימד אותי משהו שהעבודה הרגילה לא יכולה."
         },
         {
           year: "עכשיו",
           icon: "🌟",
-          title: "מומחה Salesforce + Full Stack",
-          description: "משלב מומחיות עמוקה ב-Salesforce (LWC, Apex, Community Sites) עם כישורי Full Stack מודרניים — React, Next.js, Node.js, AWS — לפתרונות חכמים וסקיילביליים."
+          title: "איפה שאני עומד היום",
+          description: "כישורי Full Stack, מומחיות עמוקה ב-Salesforce, ועניין גובר ב-AI ומוצרי SaaS. אם אתה בונה משהו שאפתני — אשמח להיות חלק ממנו."
         }
       ]
     },

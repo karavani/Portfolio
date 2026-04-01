@@ -200,7 +200,7 @@ const MainContainer = styled.div`
   justify-content: center;
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: #ffffff;
+  background: linear-gradient(160deg, #f0f4ff 0%, #e8eeff 55%, #ede8ff 100%);
   direction: ${(props) => (props.$language === "he" ? "rtl" : "ltr")};
   text-align: ${(props) => (props.$language === "he" ? "right" : "left")};
 
@@ -254,7 +254,7 @@ const SubHeading = styled.h2`
     content: "";
     position: absolute;
     bottom: -4px;
-    left: 0;
+    inset-inline-start: 0;
     width: 100%;
     height: 2px;
     background: linear-gradient(90deg, #0077ff, #8800ff);
@@ -263,7 +263,7 @@ const SubHeading = styled.h2`
 `;
 
 const SummaryText = styled.p`
-  white-space: pre-wrap;
+  white-space: pre-line;
   color: #555;
   line-height: 1.8;
   margin-bottom: 2.5rem;
@@ -308,7 +308,7 @@ const ExpertiseCard = styled.div`
 const ExpertiseCardAccent = styled.div`
   position: absolute;
   top: 0;
-  left: 0;
+  inset-inline-start: 0;
   width: 4px;
   height: 100%;
   background: linear-gradient(180deg, #0077ff, #8800ff);

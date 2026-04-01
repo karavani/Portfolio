@@ -49,7 +49,8 @@ const Footer = () => {
 };
 
 const FooterContainer = styled.footer`
-  background-color: #f8f9fa;
+  background: #04060f;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
   padding: 2rem 0;
   margin-top: auto;
   direction: ${props => props.dir};
@@ -73,7 +74,8 @@ const FooterContent = styled.div`
 
 const CopyrightText = styled.p`
   margin: 0;
-  color: #666;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.85rem;
 `;
 
 const SocialLinks = styled.div`
@@ -82,7 +84,7 @@ const SocialLinks = styled.div`
 `;
 
 const SocialLink = styled.a`
-  color: #666;
+  color: rgba(255, 255, 255, 0.35);
   transition: color 0.3s ease;
 
   &:hover {

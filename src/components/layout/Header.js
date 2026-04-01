@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link as ScrollLink } from 'react-scroll';
 import { LanguageContext } from '../../context/LanguageContext';
@@ -9,7 +9,14 @@ import { faHome, faUser, faLaptopCode, faEnvelope } from '@fortawesome/free-soli
 const Header = () => {
   const { language, toggleLanguage } = useContext(LanguageContext);
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const t = translations[language].nav;
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   const isRTL = language === 'he';
 
   const menuItems = [
@@ -20,7 +27,7 @@ const Header = () => {
   ];
 
   return (
-    <Nav>
+    <Nav $scrolled={scrolled}>
       <NavContent>
         <LanguageDropdown>
           <DropdownButton onClick={() => setIsOpen(!isOpen)} language={language}>
@@ -48,6 +55,7 @@ const Header = () => {
               spy={true}
               offset={-70}
               activeClass="slds-is-active"
+              $scrolled={scrolled}
             >
               <DesktopLabel>{item.label}</DesktopLabel>
               <MobileIcon>
@@ -64,17 +72,21 @@ const Header = () => {
 
 const Nav = styled.nav`
   position: fixed;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   z-index: 1000;
-  transition: all 0.3s ease;
   width: 100%;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
 
   @media (min-width: 769px) {
     top: 0;
     left: 0;
     right: 0;
+    background: ${p => p.$scrolled
+      ? 'rgba(8, 12, 28, 0.82)'
+      : 'transparent'};
+    backdrop-filter: ${p => p.$scrolled ? 'blur(18px)' : 'none'};
+    box-shadow: ${p => p.$scrolled
+      ? '0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 24px rgba(0,0,0,0.25)'
+      : 'none'};
   }
 
   @media (max-width: 768px) {
@@ -82,6 +94,8 @@ const Nav = styled.nav`
     left: 0;
     right: 0;
     top: auto;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(10px);
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
   }
 `;
@@ -150,24 +164,38 @@ const LightningMenuItem = styled(ScrollLink)`
   align-items: center;
   justify-content: center;
   padding: 0 1.5rem;
-  color: #3e3e3c;
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 4rem;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, border-color 0.3s ease, text-shadow 0.35s ease;
   border-bottom: 3px solid transparent;
   white-space: nowrap;
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: ${p => p.$scrolled ? 'none' : '0 1px 6px rgba(0,0,0,0.35)'};
+
+  &:hover {
+    color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &.slds-is-active {
+    color: #fff;
+    border-bottom-color: #0077ff;
+  }
 
   @media (max-width: 768px) {
     padding: 0;
     line-height: 3.5rem;
     flex: 1;
     max-width: 25%;
-    
+    color: #555;
+    text-shadow: none;
+
     &:hover, &.slds-is-active {
       border-bottom: 3px solid #1589ee;
+      color: #1589ee;
       background: none;
     }
   }
@@ -200,7 +228,7 @@ const DropdownButton = styled.button`
   background: transparent;
   border: none;
   border-radius: 50%;
-  color: #3e3e3c;
+  color: rgba(255, 255, 255, 0.88);
   font-size: 0.75rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -215,8 +243,17 @@ const DropdownButton = styled.button`
   }
 
   &:hover {
-    background: rgba(21, 137, 238, 0.08);
-    color: #1589ee;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    color: #3e3e3c;
+
+    &:hover {
+      background: rgba(21, 137, 238, 0.08);
+      color: #1589ee;
+    }
   }
 
   span {

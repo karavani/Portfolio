@@ -49,7 +49,7 @@ const Contact = () => {
     {
       icon: faGithub,
       href: "https://github.com/noamkaravani",
-      label: "GitHub",
+      label: t.github,
       text: "noamkaravani",
       config: ICON_CONFIGS.github,
     },
@@ -84,7 +84,7 @@ const Contact = () => {
           <ContactGrid>
             {contactLinks.map((link, index) => (
               <motion.div
-                key={index}
+                key={link.href}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: "-40px" }}
@@ -123,7 +123,7 @@ const MainContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(160deg, #f8f9ff 0%, #f0f0ff 50%, #f8f5ff 100%);
+  background: linear-gradient(160deg, #080c1c 0%, #0d1535 50%, #080820 100%);
   overflow: hidden;
   direction: ${(props) => props.dir};
 `;
@@ -155,7 +155,7 @@ const TitleArea = styled.div`
 const SectionTitle = styled.h1`
   font-size: 2.8rem;
   font-weight: 800;
-  color: #111;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 
   @media (max-width: 768px) {
@@ -173,7 +173,7 @@ const TitleUnderline = styled.div`
 
 const SubHeader = styled.p`
   font-size: 1.1rem;
-  color: #666;
+  color: rgba(255, 255, 255, 0.55);
   margin: 0;
 `;
 

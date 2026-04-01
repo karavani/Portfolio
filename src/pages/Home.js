@@ -6,7 +6,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { LanguageContext } from "../context/LanguageContext";
 import { translations } from "../translations/translations";
 
-const PHASES = { TYPING: "typing", PAUSING: "pausing", DELETING: "deleting" };
+const PHASES = { TYPING: "typing", DELETING: "deleting" };
 
 const useCyclingTypeWriter = (roles, typeSpeed = 65, deleteSpeed = 35, pauseMs = 2000) => {
   const [displayed, setDisplayed] = useState("");
@@ -20,6 +20,7 @@ const useCyclingTypeWriter = (roles, typeSpeed = 65, deleteSpeed = 35, pauseMs =
   }, [roles]);
 
   useEffect(() => {
+    if (!roles.length) return;
     const current = roles[roleIndex] ?? "";
 
     if (phase === PHASES.TYPING) {
@@ -100,6 +101,14 @@ const Home = () => {
   const [activeFrame, setActiveFrame] = useState(null);
   const [speechText, setSpeechText] = useState("");
   const animRef = useRef(null);
+  const resetTimeoutRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (animRef.current) clearInterval(animRef.current);
+      if (resetTimeoutRef.current) clearTimeout(resetTimeoutRef.current);
+    };
+  }, []);
 
   const handleImageClick = useCallback(() => {
     if (animRef.current) return;
@@ -113,7 +122,7 @@ const Home = () => {
       } else {
         clearInterval(animRef.current);
         animRef.current = null;
-        setTimeout(() => {
+        resetTimeoutRef.current = setTimeout(() => {
           setActiveFrame(null);
           setSpeechText("");
         }, 700);
@@ -169,6 +178,16 @@ const Home = () => {
               <Name>{t.name}</Name>
             </motion.div>
 
+            {t.tagline && (
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.65 }}
+              >
+                <Tagline>{t.tagline}</Tagline>
+              </motion.div>
+            )}
+
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -189,10 +208,10 @@ const Home = () => {
             >
               <CTAButtons $isRTL={isRTL}>
                 <PrimaryButton to="contact" smooth={true} duration={600} offset={-70}>
-                  {language === "he" ? "בואו נדבר" : "Let's Talk"}
+                  {t.cta?.primary}
                 </PrimaryButton>
                 <SecondaryButton to="projects" smooth={true} duration={600} offset={-70}>
-                  {language === "he" ? "הפרויקטים שלי" : "My Work"}
+                  {t.cta?.secondary}
                 </SecondaryButton>
               </CTAButtons>
             </motion.div>
@@ -354,6 +373,19 @@ const Name = styled.h1`
 
   @media (max-width: 768px) {
     font-size: 2.8rem;
+  }
+`;
+
+const Tagline = styled.p`
+  font-size: 1.05rem;
+  color: #666;
+  font-weight: 400;
+  margin: 0.3rem 0 0.8rem;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
   }
 `;
 

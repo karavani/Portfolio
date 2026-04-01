@@ -69,13 +69,18 @@ const Projects = () => {
         <ProjectsGrid>
           {projects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
             >
-              <ProjectCard {...project} isRTL={isRTL} />
+              <ProjectCard
+                {...project}
+                isRTL={isRTL}
+                githubLabel={t.repository}
+                liveLabel={t.liveDemo}
+              />
             </motion.div>
           ))}
         </ProjectsGrid>
@@ -86,7 +91,7 @@ const Projects = () => {
 
 const ProjectsContainer = styled.div`
   padding: 5rem 2rem;
-  background: #f8f9ff;
+  background: linear-gradient(160deg, #060b1a 0%, #0d1433 50%, #0a0a1f 100%);
   direction: ${(props) => props.dir};
 `;
 
@@ -98,7 +103,7 @@ const TitleArea = styled.div`
 const Title = styled.h1`
   font-size: 2.8rem;
   font-weight: 800;
-  color: #111;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 
   @media (max-width: 768px) {

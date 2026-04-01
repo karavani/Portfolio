@@ -25,6 +25,7 @@ const Timeline = () => {
   const { language } = useContext(LanguageContext);
   const t = translations[language]?.timeline || translations["en"].timeline;
   const isRTL = language === "he";
+  const dir = isRTL ? "rtl" : "ltr";
   const milestones = t.milestones;
 
   const sectionRef = useRef(null);
@@ -53,7 +54,7 @@ const Timeline = () => {
   );
 
   return (
-    <Wrapper dir={isRTL ? "rtl" : "ltr"}>
+    <Wrapper dir={dir}>
       {/* ── Desktop: sticky + framer-motion horizontal transform ── */}
       <DesktopSection ref={sectionRef} style={{ height: sectionHeight }}>
         <StickyContainer>
@@ -62,7 +63,7 @@ const Timeline = () => {
             <Track style={{ x }} $isRTL={isRTL}>
               {milestones.map((milestone, index) => (
                 <DesktopCard
-                  key={index}
+                  key={milestone.title}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
@@ -79,11 +80,7 @@ const Timeline = () => {
             transition={{ duration: 2, repeat: Infinity }}
           >
             <HintArrows>← →</HintArrows>
-            <HintText>
-              {language === "he"
-                ? "גלול למטה לחשיפת כל אבני הדרך"
-                : "Scroll down to reveal the journey"}
-            </HintText>
+            <HintText>{t.scrollHint}</HintText>
           </ScrollHint>
         </StickyContainer>
       </DesktopSection>
@@ -96,14 +93,12 @@ const Timeline = () => {
           transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
         >
           <SwipeArrow>→</SwipeArrow>
-          <SwipeText>
-            {language === "he" ? "החלק לגילוי הסיפור" : "Swipe to explore"}
-          </SwipeText>
+          <SwipeText>{t.swipeHint}</SwipeText>
         </SwipeHint>
         <SnapTrack $isRTL={isRTL}>
           {milestones.map((milestone, index) => (
             <SnapCard
-              key={index}
+              key={milestone.title}
               initial={{ opacity: 0, scale: 0.92 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-30px" }}
@@ -115,8 +110,8 @@ const Timeline = () => {
           <SnapEndSpacer />
         </SnapTrack>
         <DotNav>
-          {milestones.map((_, i) => (
-            <Dot key={i} />
+          {milestones.map((m) => (
+            <Dot key={m.title} />
           ))}
         </DotNav>
       </MobileSection>
